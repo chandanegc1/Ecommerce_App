@@ -10,4 +10,4 @@ const main = async ()=>{
 main().then(()=>{
     console.log("DB connection successfull......" , process.env.PORT)
 })
-.catch((e)=>{})
+.catch((e)=>{});

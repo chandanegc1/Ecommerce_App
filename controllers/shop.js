@@ -1,6 +1,7 @@
 import Products from "../module/Products.js";
 import Cart from "../module/cart.js";
 import Register from "../module/Registration.js";
+import Message from "../module/message.js";
 
 export const allProduct = async (req, res) => {
   try {
@@ -163,3 +164,20 @@ export const clearAllCart = async (req, res) => {
     });
   } catch (error) {}
 };
+
+export const postMessage = async (req ,res)=>{
+  try {
+    const {fullname , email , subject ,message} = req.body;
+    const result = await Message({fullname , email , subject ,message});
+    result.save();
+    res.send({
+      result
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+  
+}
