@@ -34,7 +34,8 @@ export const postProduct = async (req, res) => {
 
 export const cartData = async (req, res) => {
   try {
-    const cartitem = await Cart.find();
+    const {id }= req.params;
+    const cartitem = await Cart.find({id});
     res.status(200).send(cartitem);
   } catch (error) {
     res.status(500).json({
@@ -46,8 +47,8 @@ export const cartData = async (req, res) => {
 
 export const postCartData = async (req, res) => {
   try {
-    const { name, img, brand, price } = req.body;
-    const CartData = new Cart({ name, img, brand, price });
+    const { name, img, brand, price , id} = req.body;
+    const CartData = new Cart({ name, img, brand, price ,id });
     const savedata = await CartData.save();
     res.status(200).json({
       success: true,

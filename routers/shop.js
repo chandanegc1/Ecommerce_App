@@ -4,8 +4,8 @@ import { allProduct, allUsers, cartData, clearAllCart, deleteCart, postCartData,
 const router = express.Router();
 
 router.route("/product").get(allProduct).post(postProduct);
-router.route("/cart").get(cartData).post(postCartData);
-router.route("/cart/:id").delete(deleteCart);
+router.route("/cart").post(postCartData);
+router.route("/cart/:id").delete(deleteCart).get(cartData);
 router.route("/users").get(allUsers).post(userRegister);
 router.route("/users/:id").put(updateUserPrfl);
 router.route("/allcart").delete(clearAllCart);

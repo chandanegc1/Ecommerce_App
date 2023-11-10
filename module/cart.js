@@ -3,6 +3,9 @@ const registerschema = mongoose.Schema({
     name:{
         type:String,
     },
+    id:{
+        type:String
+    },
     img:{
         type:String,
     },
