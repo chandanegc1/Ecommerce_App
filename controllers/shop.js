@@ -2,6 +2,7 @@ import Products from "../module/Products.js";
 import Cart from "../module/cart.js";
 import Register from "../module/Registration.js";
 import Message from "../module/message.js";
+import Comment from "../module/comment.js";
 
 export const allProduct = async (req, res) => {
   try {
@@ -181,4 +182,30 @@ export const postMessage = async (req ,res)=>{
     });
   }
   
+}
+
+export const PostComment = async (req , res)=>{
+  try {
+    const {comment , user ,userid} = req.body;
+    const PostData = await Comment({comment  , user , userid});
+    await PostData.save();
+    res.send(PostData);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+
+}
+export const getComment = async (req , res)=>{
+  try {
+    const getData = await Comment.find({user:req.params.id});
+    res.send(getData);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 }
