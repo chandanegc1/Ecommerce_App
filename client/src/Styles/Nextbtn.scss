@@ -1,0 +1,15 @@
+.nextitems{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+  }
+.nextitems button{
+    cursor: pointer;
+    margin: 20px 5px;
+    background-color: #088178;
+    border: none;
+    height: 40px;
+    width: 50px;
+    border-radius: 3px;
+  }

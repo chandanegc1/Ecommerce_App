@@ -1,0 +1,37 @@
+.section6{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-image: url(/Assets/img/banner/b14.png);
+    background-color: rgb(7, 7, 48);
+  
+  }
+  .section6 h2{
+    color: white;
+    font-size: 25px;
+  }
+  
+  .section6 p{
+    color:rgb(195, 185, 185);
+    font-size: 1.8vh;
+  }
+   .inp{
+    height: 40px;
+    display: flex;
+  }
+  .inp button{
+    border-radius: 0 2px 2px 0;
+    width: 100px;
+    border: none;
+    background-color: #088178;
+  }
+  input{
+    border: none;
+    width: 25vw;
+    border-radius: 2px 0 0 2px;
+    
+  }
+  

@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+}
+
+body{
+    height: 100%;
+}
+
+.logo img{
+  width: 100px;
+}
+
+.logoname img{
+    width: 25px;
+}
+
+ul .cart{
+  cursor: pointer;
+  display: none;
+  background-color: #088178;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.nameicon{
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  img{
+    width: 20px;
+  }
+  p{
+    font-size: 10px;
+  }
+}
+.search{
+  display: flex;
+  margin-top: 5px;
+  input{
+    height: 14px;
+  }
+  input:focus{
+    outline: none;
+  }
+  button{
+    height: 35px; 
+    width: 9vw;
+    max-width: 70px;
+    margin-left: 5px;
+  }
+}
+.count{
+  position: absolute;
+  color: rgb(168, 34, 34);
+  font-size: 12px;
+  border-radius: 100%;
+  margin-left: 8px;
+  margin-top: 9px;
+ }
+
+
+a{
+  color: rgb(29, 27, 27);
+  text-decoration: none;
+}
+  header{
+    display: flex;
+    justify-content: space-between;
+    // padding: 7px 10px;
+    top: 0;
+    background: #E3E6F3;
+    position: sticky;
+    box-shadow: 0px 0.3px gray;  
+  }
+  .cancel{
+    display: none;
+    
+  }
+  .cancel img{
+    height: 20px; 
+    width: 20px; 
+    float: left;
+    margin-top: -10px;
+    margin-left: -150px;
+    border: 1px solid; 
+    border-radius: 100%;
+  }
+  ul li:hover{
+    color: #088178;
+  }
+  nav{
+    
+    background: #E3E6F3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    .menu{
+        display: none; 
+      } 
+  }
+  
+  .logo{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly; 
+  }
+  
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    
+  }
+  li{
+    cursor: pointer;
+    list-style: none;
+    padding:2vh 1vh ;
+    font-size: 2.5vh; 
+    img{
+      width: 70px;
+    }
+  }
+  @media (max-width:1100px){
+    nav ul {
+     display: none;  
+     flex-direction: column;
+     justify-content: start; 
+     position: fixed;
+     top: 0;
+     left: 10px;
+     background-color: #088178;
+     width: 50%;
+     height: 100vh;
+     padding: 0;
+     margin-left: -10px;
+    }
+    
+    nav ul :hover{
+     color: white;
+    }
+    ul .cart{
+      display: block;
+    }
+    .counti{
+      position: absolute;
+      color: rgb(168, 34, 34);
+      font-size: 13px;
+      margin-left: 18px;
+      margin-top: 20px;
+     
+    }
+     li{
+     line-height: 10px;
+    
+    }
+    .top{
+     margin-top: 0px;
+    }
+    nav ul img{
+     padding: 10px 10px; 
+    }
+ 
+    /*           */
+    nav .menu{
+     cursor: pointer;
+     display: block; 
+     margin: 10px ;
+   } 
+   header{
+     display: flex;
+     justify-content: space-between;
+   }
+   
+   .cancel{
+     display: block;
+     height: 20px;
+     width: 20px;
+     border-color: black;
+     border-radius: 100%;
+   }
+ }

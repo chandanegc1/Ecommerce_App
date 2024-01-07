@@ -1,0 +1,83 @@
+.cart {
+  
+   background-color: azure ;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+  }
+  .size{
+    width: 100vw;
+    overflow-y: scroll;
+  }
+  .scroll{
+    margin-left: 10px;
+    height: 40vh;
+    width: 100vw;
+  }
+  .cart table thead{
+    border: 1px solid gray;
+  }
+  
+  td{
+    padding: 10px;
+    width: 70px;
+  }
+  td img{
+    width: 70px;
+  }
+  td input{
+    width: 40px;
+  }
+  
+  .cart-add{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+  }
+  .coupon h2{
+    margin-bottom: 10px;
+  }
+  .cart-add .subtotal {
+    background-color: rgb(246, 246, 239);
+    border: 1px solid gray;
+    padding: 2%;
+  }
+  .coupon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cart-add .subtotal td{
+    border: 1px solid gray;
+    width: 10vw;
+  }
+  .cart-add {
+    button{
+      background-color: #088178;
+      color: white;
+      border: 1px solid black;
+      cursor: pointer;
+      box-shadow: 1px 1px rgb(107, 106, 106);
+    }:active{
+      box-shadow: none;
+    }
+  }
+  .subtotal{
+    button{
+      height: 30px;
+      background-color: #085781;
+      cursor: pointer;
+      box-shadow: 1px 1px rgb(107, 106, 106);
+    }:active{
+      box-shadow: none;
+    }
+  }
+  .cart-add input{
+    border: 1px solid;
+    width: 20vw;
+  }
+  .delete img{
+    width: 20px;
+  }
