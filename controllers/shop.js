@@ -118,6 +118,46 @@ export const userRegister = async (req, res) => {
   }
 };
 
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ msg: 'Please provide email and password' });
+    }
+    const user = await Register.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ msg: 'Invalid email or password' });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ msg: 'Invalid email or password' });
+    }
+    const token = jwt.sign(
+      { fullname: user.fullname, email: user.email, userId: user._id, phone: user.phone },
+      'abs'
+    );
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: true
+    });
+    res.status(200).json({ msg: 'User logged in' });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ msg: 'Internal server error' });
+  }
+};
+
+export const lagout = async(req , res)=>{
+  res.cookie('token' , 'logout' , {
+    httpOnly:true,
+    expiresIn: new Date(Date.now()),
+  })
+  res.status(200).json({msg:'user logged out'})
+}
+
+
 export const updateUserPrfl = async (req, res) => {
   try {
     const user = await Register.findOneAndUpdate({ email: req.params.id });
@@ -209,63 +249,6 @@ export const getComment = async (req , res)=>{
   }
 }
 
-export const login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    // Check if email and password are provided
-    if (!email || !password) {
-      return res.status(400).json({ msg: 'Please provide email and password' });
-    }
-
-    // Find user by email
-    const user = await Register.findOne({ email });
-
-    // Check if user exists
-    if (!user) {
-      return res.status(400).json({ msg: 'Invalid email or password' });
-    }
-
-    // Validate password
-    const isMatch = await bcrypt.compare(password, user.password);
-
-    if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid email or password' });
-    }
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { fullname: user.fullname, email: user.email, userId: user._id, phone: user.phone },
-      'abs',
-      { expiresIn: '1h' }
-    );
-
-    // Set token as cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: true,
-      domain: 'localhost', // Adjust domain here
-      path: '/', // Adjust path here
-      expires: new Date(Date.now() + 3600000), // 1 hour expiry
-    });
-
-    // Send success response
-    res.status(200).json({ msg: 'User logged in' });
-  } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ msg: 'Internal server error' });
-  }
-};
-
-
-
-export const lagout = async(req , res)=>{
-  res.cookie('token' , 'logout' , {
-    httpOnly:true,
-    expiresIn: new Date(Date.now()),
-  })
-  res.status(200).json({msg:'user logged out'})
-}
 
 export const currentUser = async(req , res)=>{
   try {
