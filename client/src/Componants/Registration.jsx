@@ -36,7 +36,7 @@ const Registration = () => {
       localStorage.setItem("email", formData.email);
       localStorage.setItem("phone", formData.phone);
       localStorage.setItem("id", response._id);
-      navigate("/");
+      navigate("/login"); 
       window.location.reload();
     } catch (error) {}
   };
