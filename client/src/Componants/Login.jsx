@@ -8,16 +8,14 @@ import {toast} from "react-toastify"
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData) ;
-  localStorage.setItem("user", JSON.stringify(formData));
-  console.log(data);
-
+  localStorage.setItem('user', data.email);
   try {
       await axios.post(login, data);
       toast.success("login success");
-      return redirect("/");
+      return null;
   } catch (error) {
       toast.error("something went wrong");
-      return error;
+      return error; 
   }
 };
 

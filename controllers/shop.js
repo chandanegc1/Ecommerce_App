@@ -42,6 +42,7 @@ export const cartData = async (req, res) => {
   try {
     const {id }= req.params;
     const cartitem = await Cart.find({id});
+    console.log(cartitem)
     res.status(200).send(cartitem);
   } catch (error) {
     res.status(500).json({

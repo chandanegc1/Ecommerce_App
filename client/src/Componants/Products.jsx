@@ -13,8 +13,7 @@ function Products(props) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   let login = localStorage.getItem("user");
-
-
+  
   useEffect(() => {
     (async ()=>{
         const {data} = await axios.get(producturl);
@@ -25,9 +24,10 @@ function Products(props) {
 
   // Add data in cart
   const addToCart = (e) => {
-    if (!login) {
+    if (login) {
+   
       CartRedux();
-      const id = localStorage.getItem("id");
+      const id = localStorage.getItem("user");
       const {  name, img, brand, price } = e;
       axios
         .post(carturl, { name, img, brand, price ,id })
