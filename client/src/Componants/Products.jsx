@@ -25,7 +25,7 @@ function Products(props) {
 
   // Add data in cart
   const addToCart = (e) => {
-    if (!login) {
+    if (login) {
       CartRedux();
       const id = localStorage.getItem("id");
       const {  name, img, brand, price } = e;

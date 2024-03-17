@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Form, Link, redirect} from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
 import scrollToTop from "./goToTop";
 import { login } from "./APIUrl.js";
 import {toast} from "react-toastify"
@@ -8,13 +8,12 @@ import {toast} from "react-toastify"
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData) ;
-  localStorage.setItem("user", JSON.stringify(formData));
-  console.log(data);
-
+  localStorage.setItem("user", data.email);
+ 
   try {
       await axios.post(login, data);
       toast.success("login success");
-      return redirect("/");
+      return null;
   } catch (error) {
       toast.error("something went wrong");
       return error;
