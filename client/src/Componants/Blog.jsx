@@ -1,7 +1,6 @@
 import React from 'react'
 import Nextbtn from './Nextbtn'
 import SingUp from './Sing-Up'
-import Features from './Features'
 import scrollToTop from './goToTop';
 function Blog() {
     scrollToTop();

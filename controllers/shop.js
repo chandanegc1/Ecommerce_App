@@ -3,11 +3,16 @@ import Cart from "../module/cart.js";
 import Register from "../module/Registration.js";
 import Message from "../module/message.js";
 import Comment from "../module/comment.js";
+import jwt from "jsonwebtoken"
+import bcrypt from "bcryptjs";
+
 
 export const allProduct = async (req, res) => {
   try {
-    const productItem = await Products.find();
-    res.send(productItem);
+    const product = await Products.find({});
+    console.log(req.cookies);
+    res.json({product});
+    
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -101,9 +106,10 @@ export const allUsers = async (req, res) => {
 export const userRegister = async (req, res) => {
   try {
     const { fullname, email, phone, password } = req.body;
-    const register = new Register({ fullname, email, phone, password });
-    const savedata = await register.save();
-    res.status(200).send(savedata);
+    const salt = await bcrypt.genSalt(10);
+    const HashPassword = await bcrypt.hash(password , salt);
+    const register = await Register.create({ fullname, email, phone, password:HashPassword });
+    res.status(200).send(register);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -129,6 +135,8 @@ export const updateUserPrfl = async (req, res) => {
       user.email = email;
     }
     if (password) {
+      const salt = await bcrypt.genSalt(10);
+      password = await bcrypt.hash(password , salt);
       user.password = password;
     }
     if (phone) {
@@ -144,18 +152,6 @@ export const updateUserPrfl = async (req, res) => {
     });
   }
 };
-// export const addToCart = async (req , res)=>{
-//     try {
-//         const post = await Products.findById(req.params.id);
-//         if (post.Cart.includes(req.user._id)) {
-//             const index = post.likes.indexOf(req.user._id);
-
-//             post.likes.splice(index, 1);
-//             await post.save();
-//     } catch (error) {
-
-//     }
-// }
 
 export const clearAllCart = async (req, res) => {
   try {
@@ -186,8 +182,11 @@ export const postMessage = async (req ,res)=>{
 
 export const PostComment = async (req , res)=>{
   try {
-    const {comment , user ,userid} = req.body;
-    const PostData = await Comment({comment  , user , userid});
+    const {comment } = req.body;
+    const {fullname} = req.user;
+    let userName = fullname;
+    const productId = req.params.id;
+    const PostData = await Comment({comment, userName, productId});
     await PostData.save();
     res.send(PostData);
   } catch (error) {
@@ -200,7 +199,7 @@ export const PostComment = async (req , res)=>{
 }
 export const getComment = async (req , res)=>{
   try {
-    const getData = await Comment.find({user:req.params.id});
+    const getData = await Comment.find({productId:req.params.id});
     res.send(getData);
   } catch (error) {
     res.status(500).json({
@@ -208,4 +207,81 @@ export const getComment = async (req , res)=>{
       message: error.message,
     });
   }
+}
+
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if email and password are provided
+    if (!email || !password) {
+      return res.status(400).json({ msg: 'Please provide email and password' });
+    }
+
+    // Find user by email
+    const user = await Register.findOne({ email });
+
+    // Check if user exists
+    if (!user) {
+      return res.status(400).json({ msg: 'Invalid email or password' });
+    }
+
+    // Validate password
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ msg: 'Invalid email or password' });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { fullname: user.fullname, email: user.email, userId: user._id, phone: user.phone },
+      'abs',
+      { expiresIn: '1h' }
+    );
+
+    // Set token as cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: true,
+      domain: 'localhost', // Adjust domain here
+      path: '/', // Adjust path here
+      expires: new Date(Date.now() + 3600000), // 1 hour expiry
+    });
+
+    // Send success response
+    res.status(200).json({ msg: 'User logged in' });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ msg: 'Internal server error' });
+  }
+};
+
+
+
+export const lagout = async(req , res)=>{
+  res.cookie('token' , 'logout' , {
+    httpOnly:true,
+    expiresIn: new Date(Date.now()),
+  })
+  res.status(200).json({msg:'user logged out'})
+}
+
+export const currentUser = async(req , res)=>{
+  try {
+    const user = await Register.find({_id:req.user.userId});
+    res.status(200).json({user});
+  } catch (error) {
+    res.status(400).json({msg:"something went wrong"}); 
+  }
+}
+
+export const getCartCount = async(req ,res)=>{
+  try {
+    const cartCount = await Cart.countDocuments();
+    res.status(200).json({cartCount});
+  } catch (error) {
+    res.status(400).json({msg:"something went wrong"}); 
+  }
+  
 }

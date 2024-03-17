@@ -1,48 +1,40 @@
 import React, { useState } from "react";
 import { usersurl } from "./APIUrl";
 import axios from "axios";
-import { useNavigate ,useParams } from "react-router-dom";
+import { Form, useNavigate} from "react-router-dom";
 import scrollToTop from "./goToTop";
+import {toast} from "react-toastify";
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData) ;
+  console.log(data);
+
+  try {
+      const url = usersurl+"/chandanegc@gmail.com";
+      const response = await axios.put(url, data);
+
+      localStorage.setItem("fullname" ,response.data.fullname)
+      localStorage.setItem("email" , response.data.email);
+      localStorage.setItem("phone" , response.data.phone);
+      toast.success("Update success..");
+      window.location.reload();
+      return null;
+      
+  } catch (error) {
+      toast.error("something went wrong");
+      return error;
+  }
+};
+
 function Profile() {
   scrollToTop();
-  const {ProductId} = useParams()
-  const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    phone: "",
-    password: "",
-  });
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({...formData , [name]: value});
-  };
 
-  const localEmail = localStorage.getItem("email");
- const handleSubmit = async ()=>{
-  try {
-    const {fullname , email ,phone ,password} = formData;
-    const url = usersurl+"/chandanegc@gmail.com";
-    const response =await axios.put(url,{fullname , email ,phone ,password});
-    if(fullname){
-      localStorage.setItem("fullname" ,response.data.fullname)
-    }
-    if(email){
-      localStorage.setItem("email" , response.data.email);
-    }
-    if(phone){
-      localStorage.setItem("phone" , response.data.phone);
-    }
-    alert("Updated successfully..........")
-    navigate("/");
-    window.location.reload();
-  } catch (error) {
-    // console.log(error);
-  }
- }
-
+  const formData=[];
   // logout 
   const navigate = useNavigate();
-  function logout() {
+  async function logout() {
+    await axios.get(logout);
     localStorage.clear();
     alert("You're Successfully Log-out .....");
     navigate("/");
@@ -59,28 +51,25 @@ function Profile() {
       </div>
       <div className="profile-settings-container">
         <h2>Profile Settings</h2>
-
-
-        <form action="#" onSubmit={handleSubmit}>
-
+        <Form method="post" action="#">
           <div className="form-group">
             <label>Change Name</label>
-            <input name="fullname" value={formData.fullname} onChange={handleInputChange} placeholder={localStorage.fullname}/>
+            <input name="fullname" value={formData.fullname}   placeholder={localStorage.fullname}/>
           </div>
 
           <div className="form-group">
             <label>Change Email</label>
-            <input name="email" value={formData.email} onChange={handleInputChange} placeholder={localStorage.email}/>
+            <input name="email" value={formData.email}   placeholder={localStorage.email}/>
           </div>
 
           <div className="form-group">
             <label>Change Phone</label>
-            <input name="phone" value={formData.phone} onChange={handleInputChange} placeholder={localStorage.phone}/>
+            <input name="phone" value={formData.phone}   placeholder={localStorage.phone}/>
           </div>
 
           <div className="form-group">
             <label>Change Password</label>
-            <input name="password" value={formData.password} onChange={handleInputChange} placeholder="**********"/>
+            <input name="password" value={formData.password}   placeholder="**********"/>
           </div>
 
           <div className="form-group" >
@@ -90,8 +79,7 @@ function Profile() {
 
           <button type="submit" className="btn btn-primary">Update Changes</button>
           <button style={{ background: "red" }} onClick={logout} type="submit" className="btn btn-primary">LOG-OUT</button>
-        </form>
-
+        </Form>
       </div>
     </>
   );

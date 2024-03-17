@@ -1,90 +1,55 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Form, Link, redirect} from "react-router-dom";
 import scrollToTop from "./goToTop";
-import { usersurl } from "./APIUrl";
+import { login } from "./APIUrl.js";
+import {toast} from "react-toastify"
+
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData) ;
+  localStorage.setItem("user", JSON.stringify(formData));
+  console.log(data);
+
+  try {
+      await axios.post(login, data);
+      toast.success("login success");
+      return redirect("/");
+  } catch (error) {
+      toast.error("something went wrong");
+      return error;
+  }
+};
 
 const Login = () => {
-  scrollToTop();
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  useEffect(() => {
-    let login = localStorage.getItem("user", true);
-    if (login) {
-      navigate("/");
-    }
-  });
-
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    axios
-      .get(usersurl)
-      .then((users) => setUsers(users.data))
-      .catch((err) => console.log(err));
-      setLoading(true);     
-  }, []);
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const [user, setUser] = useState("");
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    users.map((data) => {
-      if (
-        data.password === formData.password &&
-        data.email === formData.email
-      ) {
-        localStorage.setItem("user", JSON.stringify(formData));
-        localStorage.setItem("email", formData.email);
-        localStorage.setItem("fullname", data.fullname);
-        localStorage.setItem("id", data._id);
-        localStorage.setItem("phone", data.phone);
-        
-        navigate("/");
-        window.location.reload();
-      } else {
-        setUser("Incorrect Password or Email");
-      }
-    });
-  };
-  
+  scrollToTop(); 
   return (
     <>
-      {loading ? <div className="body">
+      <div className="body">
         <div className="wrapper">
           <h2>Login Now</h2>
-          <form action="#" onSubmit={handleSubmit}>
+          <Form method="post">
             <div className="input-box">
               <input
-                onChange={handleInputChange}
                 name="email"
                 id="email"
                 type="email"
+                defaultValue="chandanegc@gmail.com"
                 placeholder="Enter your email"
-                required="true"
+                required
               />
             </div>
             <div className="input-box">
               <input
-                onChange={handleInputChange}
                 name="password"
                 type="password"
+                defaultValue="1234"
                 placeholder="Enter password"
-                required="true"
+                required
               />
             </div>
             <div className="policy">
-              <h3 style={{ color: "red" }}>{user}</h3>
+              <h3 style={{ color: "red" }}></h3>
             </div>
             <div className="input-box button">
               <button type="submit">Login</button>
@@ -94,11 +59,10 @@ const Login = () => {
                 You have no account? <Link to={"/register"}>Register Now </Link>
               </h3>
             </div>
-          </form>
+          </Form>
         </div>
-      </div>: <div className="loading"><p>Data Loading......</p></div>}
+      </div>
     </>
   );
 };
-
 export default Login;

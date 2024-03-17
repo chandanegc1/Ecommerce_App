@@ -11,7 +11,7 @@ const registerschema = mongoose.Schema({
         type:String,
     }, 
     password:{
-        type:String 
+        type:String ,
     },
 });
 const Register = mongoose.model("Register" , registerschema);

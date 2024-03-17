@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import Productss from "./Products";
 import { useDispatch } from "react-redux";
 import { CommentUrl, carturl } from "./APIUrl";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const [comment, setComment] = useState([]);
@@ -18,7 +18,7 @@ const ProductDetails = () => {
       const { name, img, brand, price } = e;
       CartRedux();
       axios.post(carturl, { name, img, brand, price, id }).then((response) => {
-        alert(e.name + " Added in Cart");
+        toast.success(e.name + " Added in Cart");
       });
     } else {
       navigate("/login");
@@ -29,9 +29,13 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const getdata = await axios.get(CommentUrl + Product._id);
+        let url =` ${CommentUrl}/${Product._id}`;
+        const getdata = await axios.get(url);
         setComment(getdata.data);
-      } catch (error) {}
+        console.log(getdata.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetch();
   }, [clickCount]);
@@ -40,7 +44,7 @@ const ProductDetails = () => {
   const CartRedux = () => {
     dispatch({
       type: "cartCount",
-      payload: 1,
+      payload: +1,
     });
   };
 
@@ -55,7 +59,8 @@ const ProductDetails = () => {
 
     const commentValue = commentinput.comment.trim();
     if (commentValue) {
-      axios.post(CommentUrl, { comment: commentValue, user: Product._id, userid: localStorage.fullname })
+      let url =` ${CommentUrl}/${Product._id}`;
+      axios.post( url , { comment:commentValue})
         .then((response) => {
           setCommentinput({ comment: '' });
           setClickCount(clickCount + 1);
@@ -130,7 +135,7 @@ const ProductDetails = () => {
         {comment.map((item, index) => (
           <div className="handle" key={index}>
             <div className="user">
-              <h6>{item.userid} </h6>
+              <h6>{item.userName} </h6>
             </div>
             <div className="userComment">
               <p>{comment[--count].comment}</p>
@@ -138,9 +143,6 @@ const ProductDetails = () => {
           </div>
         ))}
       </div>
-
-      {/* <Productss start={0} end={8} />
-      <Productss start={5} end={13} /> */}
     </>
   );
 };

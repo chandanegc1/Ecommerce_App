@@ -1,37 +1,34 @@
 import React, { useState,  useEffect } from "react";
 import axios from "axios";
 import scrollToTop from "./goToTop";
-import { allcarturl, carturl, postcarturl } from "./APIUrl";
+import { allcarturl, carturl, getCartUrl } from "./APIUrl";
 import { useDispatch } from "react-redux"; 
-let cartitems = 0;
+import { redirect, useLoaderData } from "react-router-dom";
+
+
+export const loader = async(req , res)=>{
+  try {
+    const {data} = await axios.get(getCartUrl);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return redirect("/");
+  }
+}
 
 function Cart() {
   scrollToTop();
-  cartitems = 0;
   let total = 0;
-  let count = 0;
   const [priceCount, setPriceCount] = useState(0);
   total += priceCount;
 
-
-  const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
-
+  const user = useLoaderData();
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        const response = await axios.get(postcarturl);
-        setUsers(response.data);
-        setLoading(true);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetch();
-  }, []);
+    setUsers(user);
+  }, [user]);
 
   const cartprice = users.reduce((ac , currval)=> ac+currval.price ,0)
-
   
   useEffect(() => {
     setPriceCount(cartprice);
@@ -53,7 +50,7 @@ function Cart() {
 
   const reducxfunc = ()=>{
     dispatch({
-      type:"cartCount",
+      type:"setCartCount",
       payload: 0
     })
   }
@@ -82,7 +79,7 @@ function Cart() {
               </tr>
             </thead>
             <div className="scroll">
-              {loading ? users.map((Product) => (
+              { users.map((Product) => (
                 <tbody>
                   <td
                     className="delete"
@@ -102,7 +99,7 @@ function Cart() {
                   </td>
                   <td></td>
                 </tbody>
-              )): <div className="loading"><p>Data Loading......</p></div>}
+              ))}
             </div>
           </div>
         </table>

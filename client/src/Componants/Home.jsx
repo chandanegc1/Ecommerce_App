@@ -3,27 +3,18 @@ import Features from "./Features";
 import Products from "./Products";
 import SingUp from "./Sing-Up";
 import { Link } from "react-router-dom";
-import scrollToTop from "./goToTop";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import axios from "axios";
-import { postcarturl } from "./APIUrl";
-import { UseSelector } from "react-redux";
+import { getCartUrl} from "./APIUrl";
 
-
-function HOme() {
-  // scrollToTop();
-
-  console.log(useSelector(state=>state.cartcustom));
-
-
+function Home() {
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(postcarturl);
+        const response = await axios.get(getCartUrl);
         setUsers(response.data);
         setLoading(true);
       } catch (error) {}
@@ -37,7 +28,6 @@ function HOme() {
       payload: users.length,
     });
   }
-
   return (
     <>
       <div className="section1">
@@ -65,7 +55,7 @@ function HOme() {
       {<Products start={5} end={13} />}
 
       {
-        <div class="section4">
+        <div className="section4">
           <p>Repair services</p>
           <h1>Up to 70% - All t-Shirts & Accessories</h1>
           <Link to="/shop">
@@ -101,7 +91,7 @@ function HOme() {
 
       <div className="part">
         <div className="banner3 banner">
-          <div class="describe">
+          <div className="describe">
             <h2>SEASON SALE</h2>
             <h5>Winter Collection -50% OFF</h5>
           </div>
@@ -124,4 +114,4 @@ function HOme() {
   );
 }
 
-export default HOme;
+export default Home;

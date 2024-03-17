@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { producturl } from "./APIUrl.js";
 import { carturl } from "./APIUrl.js";
 import { useDispatch } from "react-redux";
+import {toast} from "react-toastify";
+
+
 
 function Products(props) {
   const [users, setUsers] = useState([]);
@@ -14,22 +17,22 @@ function Products(props) {
 
   useEffect(() => {
     (async ()=>{
-        const productItem = await axios.get(producturl);
-        setUsers(productItem.data);
+        const {data} = await axios.get(producturl);
+        setUsers(data.product);
         setLoading(true);
     })();
   }, []);
 
   // Add data in cart
   const addToCart = (e) => {
-    if (login) {
+    if (!login) {
       CartRedux();
       const id = localStorage.getItem("id");
       const {  name, img, brand, price } = e;
       axios
         .post(carturl, { name, img, brand, price ,id })
         .then(() => {
-          alert(e.name + " Added in Cart");
+          toast.success(e.name + " Added in Cart");
         })
     }else{
       navigate("/login")

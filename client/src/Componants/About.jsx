@@ -1,6 +1,5 @@
 import React from 'react'
 import scrollToTop from './goToTop';
-import Features from './Features'
 import SingUp from './Sing-Up';
 function About() {
   scrollToTop();
@@ -10,7 +9,6 @@ function About() {
             <h1>#KnowUs</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore saepe</p> 
         </div>
-
         <div className="section124">
             <div className="imgpart">
                 <img src="img/about/a6.jpg" alt=""/>
