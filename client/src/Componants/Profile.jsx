@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { usersurl } from "./APIUrl";
+import { logout, usersurl } from "./APIUrl";
 import axios from "axios";
 import { Form, useNavigate} from "react-router-dom";
 import scrollToTop from "./goToTop";
@@ -33,12 +33,12 @@ function Profile() {
   const formData=[];
   // logout 
   const navigate = useNavigate();
-  async function logout() {
-    await axios.get(logout);
+  async function logoutFun() {
+    await axios(logout);
     localStorage.clear();
-    alert("You're Successfully Log-out .....");
-    navigate("/");
-    window.location.reload();
+    toast.success("You're Successfully Log-out .....");
+    navigate("/login");
+    window.location.reload(); 
   }
 
   return (
@@ -78,7 +78,7 @@ function Profile() {
           </div>
 
           <button type="submit" className="btn btn-primary">Update Changes</button>
-          <button style={{ background: "red" }} onClick={logout} type="submit" className="btn btn-primary">LOG-OUT</button>
+          <button style={{ background: "red" }} onClick={logoutFun} type="submit" className="btn btn-primary">LOG-OUT</button>
         </Form>
       </div>
     </>

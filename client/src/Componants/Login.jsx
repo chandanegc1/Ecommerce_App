@@ -22,7 +22,7 @@ export const action = async ({ request }) => {
       toast.error("Login failed");
     }
     
-    return null;
+    return redirect("/");
   } catch (error) {
     toast.error("Something went wrong");
     return error;

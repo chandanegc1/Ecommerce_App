@@ -44,10 +44,11 @@ const router = createBrowserRouter([
     path:"/",
     element:<HomeLayout />,
     action:HomeLayoutLoader,
+    
     children:[
       {
         index:true,
-        element:<Home/>
+        element:<PrivateComponent Component={Home} />,
       },
       {
         path:"shop",
@@ -83,11 +84,11 @@ const router = createBrowserRouter([
       {
         path:"profile",
         action:profileAction,
-        element:<Profile />
+        element:<PrivateComponent Component={Profile} />,
       },
       {
         path:"ProductDetails",
-        element:<ProductDetails />
+        element:<ProductDetails /> 
       }
     ]
   },

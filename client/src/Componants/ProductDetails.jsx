@@ -54,9 +54,9 @@ const ProductDetails = () => {
     setCommentinput({ [name]: value });
   };
 
+
   const commentSubmit = (e) => {
     e.preventDefault();
-
     const commentValue = commentinput.comment.trim();
     if (commentValue) {
       let url =` ${CommentUrl}/${Product._id}`;
@@ -68,8 +68,8 @@ const ProductDetails = () => {
         .catch((e) => console.log(e));
     }
   };
-  let count = comment.length;
 
+  
   return (
     <>
       <div className="contain">
@@ -138,7 +138,7 @@ const ProductDetails = () => {
               <h6>{item.userName} </h6>
             </div>
             <div className="userComment">
-              <p>{comment[--count].comment}</p>
+              <p>{item.comment}</p>
             </div>
           </div>
         ))}

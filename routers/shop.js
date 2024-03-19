@@ -4,7 +4,7 @@ import { userAuth } from "../middleware/authmiddleware.js";
 
 const router = express.Router();
 
-router.route("/product").get(userAuth, allProduct).post(postProduct);
+router.route("/product").get( allProduct).post(postProduct);
 router.route("/cart").post( userAuth, postCartData);
 router.route("/cart/:id").delete(userAuth, deleteCart).get(userAuth, cartData);
 router.get("/cartcount" ,userAuth, getCartCount);

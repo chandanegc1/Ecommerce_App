@@ -1,9 +1,19 @@
 import mongoose from "mongoose";
 const messageSchema = mongoose.Schema({
-    fullname:String,
-    email:String,
-    subject:String,
-    message:String
+    fullname:{
+        type:String,
+        require:true
+    },
+    email:{
+        type:String,
+        require:true
+    },
+    subject:{
+        type:String,
+    },
+    message:{
+        type:String,
+    }
 });
 
 const Message = mongoose.model("Message" , messageSchema);

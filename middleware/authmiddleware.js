@@ -11,6 +11,6 @@ export const userAuth = (req, res, next) => {
     req.user = { userId, email, fullname };
     next();
   } catch (error) {
-    return res.status(409).json({ msg: "Unauthorized user" });
+    return res.status(401).json({ msg: "Unauthorized user" });
   }
 };

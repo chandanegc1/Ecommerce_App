@@ -139,6 +139,7 @@ export const login = async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       // secure: true
+      expiresIn:'100d'
     });
     res.status(200).json({ msg: 'User logged in' });
   } catch (error) {
@@ -147,12 +148,16 @@ export const login = async (req, res) => {
   }
 };
 
-export const lagout = async(req , res)=>{
-  res.cookie('token' , 'logout' , {
-    httpOnly:true,
-    expiresIn: new Date(Date.now()),
-  })
-  res.status(200).json({msg:'user logged out'})
+export const logout = async(req , res)=>{
+  try {
+    res.cookie('token' , 'logout' , {
+      httpOnly:true,
+      expiresIn: new Date(Date.now()),
+    })
+    res.status(200).json({msg:'user logged out'})
+  } catch (error) {
+    res.status(400).json({msg:error})
+  }
 }
 
 
@@ -235,9 +240,10 @@ export const PostComment = async (req , res)=>{
   }
 
 }
+
 export const getComment = async (req , res)=>{
   try {
-    const getData = await Comment.find({productId:req.user.fullname});
+    const getData = await Comment.find({ productId: req.params.id }).sort({ createdAt: -1 });
     res.send(getData);
   } catch (error) {
     res.status(500).json({
@@ -247,10 +253,9 @@ export const getComment = async (req , res)=>{
   }
 }
 
-
 export const currentUser = async(req , res)=>{
   try {
-    const user = await Register.find({_id:req.user.userId});
+    const user = await Register.findOne({_id:req.user.userId});
     res.status(200).json({user});
   } catch (error) {
     res.status(400).json({msg:"something went wrong"}); 

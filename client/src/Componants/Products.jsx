@@ -7,8 +7,6 @@ import { carturl } from "./APIUrl.js";
 import { useDispatch } from "react-redux";
 import {toast} from "react-toastify";
 
-
-
 function Products(props) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,7 +26,7 @@ function Products(props) {
     if (login) {
       CartRedux();
       const id = localStorage.getItem("id");
-      const {  name, img, brand, price } = e;
+      const {name, img, brand, price } = e;
       axios
         .post(carturl, { name, img, brand, price ,id })
         .then(() => {
