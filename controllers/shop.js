@@ -10,9 +10,7 @@ import bcrypt from "bcryptjs";
 export const allProduct = async (req, res) => {
   try {
     const product = await Products.find({});
-    console.log(req.cookies);
     res.json({product});
-    
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -42,7 +40,6 @@ export const cartData = async (req, res) => {
   try {
     const {id }= req.params;
     const cartitem = await Cart.find({id});
-    console.log(cartitem)
     res.status(200).send(cartitem);
   } catch (error) {
     res.status(500).json({
@@ -54,8 +51,8 @@ export const cartData = async (req, res) => {
 
 export const postCartData = async (req, res) => {
   try {
-    const { name, img, brand, price , id} = req.body;
-    const CartData = new Cart({ name, img, brand, price ,id });
+    const { name, img, brand, price} = req.body;
+    const CartData = new Cart({ name, img, brand, price ,id:req.user.email });
     const savedata = await CartData.save();
     res.status(200).json({
       success: true,
@@ -141,7 +138,7 @@ export const login = async (req, res) => {
     );
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true
+      // secure: true
     });
     res.status(200).json({ msg: 'User logged in' });
   } catch (error) {
@@ -240,7 +237,7 @@ export const PostComment = async (req , res)=>{
 }
 export const getComment = async (req , res)=>{
   try {
-    const getData = await Comment.find({productId:req.params.id});
+    const getData = await Comment.find({productId:req.user.fullname});
     res.send(getData);
   } catch (error) {
     res.status(500).json({

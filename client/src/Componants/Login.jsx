@@ -4,21 +4,31 @@ import scrollToTop from "./goToTop";
 import { login } from "./APIUrl.js";
 import {toast} from "react-toastify"
 
-
 export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData) ;
-  localStorage.setItem("user", data.email);
- 
   try {
-      await axios.post(login, data);
-      toast.success("login success"); 
-      return null;
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    localStorage.setItem("user", data.email);
+
+    const response = await axios.post(login, data, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (response.status === 200) {
+      toast.success("Login successful");
+    } else {
+      toast.error("Login failed");
+    }
+    
+    return null;
   } catch (error) {
-      toast.error("something went wrong");
-      return error;
+    toast.error("Something went wrong");
+    return error;
   }
 };
+
 
 const Login = () => {
   scrollToTop(); 
