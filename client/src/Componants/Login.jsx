@@ -43,6 +43,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 defaultValue="1234"
+                autoFill
                 placeholder="Enter password"
                 required
               />
