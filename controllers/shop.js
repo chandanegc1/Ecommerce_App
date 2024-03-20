@@ -9,7 +9,6 @@ import bcrypt from "bcryptjs";
 
 export const allProduct = async (req, res) => {
   try {
-    console.log("chandan")
     const product = await Products.find({});
     res.json({product});
   } catch (error) {
@@ -144,7 +143,6 @@ export const login = async (req, res) => {
     });
     res.status(200).json({ msg: 'User logged in' });
   } catch (error) {
-    console.error('Login error:', error);
     res.status(500).json({ msg: 'Internal server error' });
   }
 };

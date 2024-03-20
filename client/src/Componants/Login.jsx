@@ -22,8 +22,8 @@ export const action = async ({ request }) => {
     } else {
       toast.error("Login failed");
     }
-     
-    return null;
+    
+    return redirect("/");
   } catch (error) {
     toast.error("Something went wrong");
     return error;

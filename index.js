@@ -8,7 +8,8 @@ dotenv.config();
 const port = process.env.PORT 
 import cors from "cors";
 
-         //  midlewares  
+         //  midlewares 
+app.use(express.static('build')); 
 app.use(cors());
 app.use(cookieParser());         
 app.use(express.json());
