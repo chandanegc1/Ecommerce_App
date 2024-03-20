@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import scrollToTop from "./goToTop";
 import { usersurl } from "./APIUrl";
+import {toast} from "react-toastify"
 
 const Registration = () => {
   scrollToTop();
@@ -31,14 +32,18 @@ const Registration = () => {
         phone: formData.phone,
         password: formData.password,
       });
+      toast.success("Registration success....");
       localStorage.setItem("user", JSON.stringify(formData));
       localStorage.setItem("fullname", formData.name);
       localStorage.setItem("email", formData.email);
       localStorage.setItem("phone", formData.phone);
       localStorage.setItem("id", response._id);
       navigate("/login"); 
+      
       window.location.reload();
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Something went wrong..");
+    }
   };
 
   return (
@@ -80,6 +85,8 @@ const Registration = () => {
               onChange={handleInputChange}
               name="password"
               type="password"
+              min={8}
+              max={20}
               placeholder="Create password"
               required="true"
             />
@@ -88,13 +95,15 @@ const Registration = () => {
             <input
               onChange={handleInputChange}
               type="password"
-              placeholder="ConChangeirm password"
+              placeholder="Confirm password"
+              min={8}
+              max={20}
               required="true"
             />
           </div>
           <div className="policy">
-            <input type="checkbox" />
-            <h3>I accept all terms &amp; condition</h3>
+            <input type="checkbox" required />
+            <h3>I accept all terms & condition</h3>
           </div>
           <div className="input-box button">
             <input type="submit" />

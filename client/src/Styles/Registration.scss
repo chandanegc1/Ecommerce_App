@@ -58,8 +58,14 @@ form .input-box input{
 }
 form .policy{
   display: flex;
-  align-items: center;
+  justify-content: center;
+  input{
+    float: left;
+    height: 15px;
+    width: 15px;
+  }
 }
+
 form h3{
   color: #707070;
   font-size: 14px;

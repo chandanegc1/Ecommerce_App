@@ -9,7 +9,6 @@ router.route("/cart").post( userAuth, postCartData);
 router.route("/cart/:id").delete(userAuth, deleteCart).get(userAuth, cartData);
 router.get("/cartcount" ,userAuth, getCartCount);
 
-router.route("/users/:id").put(userAuth, updateUserPrfl);
 router.route("/allcart").delete(userAuth, clearAllCart);
 router.route("/message").post(userAuth, postMessage);
 router.route("/comment/:id").get(getComment).post(userAuth, userAuth , PostComment);

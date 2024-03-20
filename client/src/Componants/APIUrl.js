@@ -14,3 +14,4 @@ export const CommentUrl = url+"comment"
 export const cartCount = url+"cartcount"
 export const logout = url+"logout" 
 export const currentUser = url+"current-user" 
+export const updateUser = url+"users/"+id

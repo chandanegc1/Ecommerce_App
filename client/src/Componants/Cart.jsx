@@ -5,7 +5,6 @@ import { allcarturl, carturl, getCartUrl } from "./APIUrl";
 import { useDispatch } from "react-redux"; 
 import { redirect, useLoaderData } from "react-router-dom";
 
-
 export const loader = async(req , res)=>{
   try {
     const {data} = await axios.get(getCartUrl);
@@ -140,72 +139,3 @@ function Cart() {
 }
 
 export default Cart;
-
-
-// const cart = [
-//     {
-//         img:"img/products/f1.jpg",
-//         product:"Shirt",
-//         price:"112$",
-//     },
-//     {
-//         img:"img/products/f1.jpg",
-//         product:"Shirt",
-//         price:"112$",
-//     },
-//     {
-//         img:"img/products/f2.jpg",
-//         product:"Shirt",
-//         price:"152$",
-//     },
-//     {
-//         img:"img/products/f2.jpg",
-//         product:"Shirt",
-//         price:"152$",
-//     },
-//     {
-//         img:"img/products/f3.jpg",
-//         product:"Shirt",
-//         price:"113$",
-//     },
-//     {
-//         img:"img/products/f4.jpg",
-//         product:"Shirt",
-//         price:"116$",
-//     },
-// ];
-
-// const parent = useRef(null);
-//   useEffect(()=>{
-//     for(let i =0 ; i< cart.length ;i++){
-//         const newtbody = document.createElement("tbody");
-//         const pdtsimg = document.createElement("img");
-//         pdtsimg.src = cart[i].img;
-//         const pdt = document.createElement("td");
-//         const newcancel =document.createElement("td");
-//         newcancel.textContent="*";
-//         const price =document.createElement("td");
-//         price.textContent=cart[i].price;
-//         const newtdproduct = document.createElement("td");
-//         newtdproduct.textContent = cart[i].product;
-//         const tdinp = document.createElement("td");
-//         const inp = document.createElement("input");
-//         inp.type = "number";
-//         inp.value = "1";
-//         const newsutotal = document.createElement("td");
-//         newsutotal.textContent="83$";
-
-//         newtbody.appendChild(newcancel);
-//         newtbody.appendChild(pdt);
-//         pdt.appendChild(pdtsimg);
-//         newtbody.appendChild(newtdproduct);
-//         newtbody.appendChild(price);
-//         newtbody.appendChild(tdinp);
-//         tdinp.appendChild(inp);
-//         newtbody.appendChild(newsutotal);
-//         newsutotal.textContent="525$";
-//         parent.current.appendChild(newtbody);
-//     }
-// }, []);
-
-//

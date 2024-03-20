@@ -51,7 +51,7 @@ function Home() {
         </div>
       </div>
 
-      {<Products start={0} end={8} />}
+      {<Products start={0} end={8} cart={false} />}
       {<Products start={5} end={13} />}
 
       {

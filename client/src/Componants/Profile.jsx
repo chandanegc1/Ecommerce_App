@@ -31,7 +31,6 @@ function Profile() {
   scrollToTop();
 
   const formData=[];
-  // logout 
   const navigate = useNavigate();
   async function logoutFun() {
     await axios(logout);

@@ -72,16 +72,6 @@ function Products(props) {
                   <div className="price">
                     <h4>{Product.price}</h4>
                   </div>
-                  <div>
-                    <button>
-                      <img
-                        className="shop-cart"
-                        onClick={() => addToCart(Product)}
-                        src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
-                        alt=""
-                      />
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
