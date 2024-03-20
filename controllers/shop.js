@@ -9,6 +9,7 @@ import bcrypt from "bcryptjs";
 
 export const allProduct = async (req, res) => {
   try {
+    console.log("chandan")
     const product = await Products.find({});
     res.json({product});
   } catch (error) {
@@ -19,7 +20,7 @@ export const allProduct = async (req, res) => {
   }
 };
 
-export const postProduct = async (req, res) => {
+export const postProduct = async (req, res) => { 
   try {
     const { name, img, brand, price } = req.body;
     const productData = new Products({ name, img, brand, price });
@@ -141,8 +142,7 @@ export const login = async (req, res) => {
       // secure: true
       expiresIn:'100d'
     });
-    user.password = null;
-    res.status(200).json({ user ,msg: 'User logged in' });
+    res.status(200).json({ msg: 'User logged in' });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ msg: 'Internal server error' });

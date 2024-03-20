@@ -15,13 +15,14 @@ export const action = async ({ request }) => {
         "Content-Type": "application/json"
       }
     });
+
     localStorage.setItem("userData", JSON.stringify(response.data.user));
     if (response.status === 200) {
       toast.success("Login successful");
     } else {
       toast.error("Login failed");
     }
-    
+     
     return null;
   } catch (error) {
     toast.error("Something went wrong");

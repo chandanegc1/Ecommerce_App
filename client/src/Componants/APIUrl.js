@@ -1,7 +1,6 @@
 // const url ="https://railwayecommerce-production.up.railway.app/"
 // const url ="https://shopwithjoy.onrender.com/"
-// const url ="http://localhost:3000/" 
-const url ="https://4nx6ku2ceb.ap-south-1.awsapprunner.com/" 
+const url ="/" 
 const id = localStorage.getItem("user");
 export const carturl = url+"cart"
 export const getCartUrl = url+"cart/"+id
