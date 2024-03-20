@@ -6,6 +6,7 @@ const initialState = {
 
 export const customReducer = createReducer(initialState, {
   cartCount: (state, action) => {
+    if(state.cartCount>=0)
     state.cartCount += action.payload;
   },
   setCartCount: (state, action) => {

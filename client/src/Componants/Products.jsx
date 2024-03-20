@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import scrollToTop from "../Componants/goToTop.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { producturl } from "./APIUrl.js";
 import { carturl } from "./APIUrl.js";
 import { useDispatch } from "react-redux";
@@ -72,6 +72,16 @@ function Products(props) {
                   <div className="price">
                     <h4>{Product.price}</h4>
                   </div>
+                  {props.cart? <div>
+                    <button>
+                     <Link to="/ProductDetails"><img
+                        className="shop-cart"
+                        onClick={() => addToCart(Product)}
+                        src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
+                        alt=""
+                      /></Link> 
+                    </button>
+                  </div>:null}
                 </div>
               </div>
             </div>

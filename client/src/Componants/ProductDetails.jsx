@@ -12,6 +12,20 @@ const ProductDetails = () => {
   const Product = Products.state.Product;
   let login = localStorage.getItem("user");
 
+
+  const ItemSize = [
+    {
+      size:"M"
+    },
+    {
+      size:"L"
+    },
+    {
+      size:"x"
+    }
+  ]
+
+  const [size , setSize] = useState()
   const addToCart = (e) => {
     if (login) {
       const id = localStorage.getItem("id");
@@ -85,14 +99,16 @@ const ProductDetails = () => {
           <h3>{Product.price}</h3>
           <select name="" id="">
             <option value="">Select Size</option>
-            <option value="">L</option>
-            <option value="">M</option>
-            <option value="">XL</option>
+            {ItemSize.map(item => (
+              <option value="">{item.size}</option>
+            ))}
           </select>
           <div style={{ display: "flex" }} className="cartbtn">
             <div>
               <input
                 type="number"
+                max={5}
+                min={1}
                 defaultValue={1}
                 style={{ height: 40, width: 40, border: "1px solid" }}
               />
