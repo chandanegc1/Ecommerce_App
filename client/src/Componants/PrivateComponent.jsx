@@ -7,22 +7,12 @@ import {toast} from "react-toastify"
 const PrivateComponent = (props) => {
   const {Component} = props;
   const navigate =useNavigate();
-  const[User, setUser] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const {data} = await axios(currentUser);
-        setUser(data.user);
-        if (!User) {
+        const local = localStorage.getItem("user");
+        if (!local) {
           navigate("/login");
-          toast.error("Please Login...");
         }
-      } catch (error) {
-        navigate("/login");
-      }
-    };
-    fetchData();
   }, []);
 
   return (

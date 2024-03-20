@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     children:[
       {
         index:true,
-        element:<PrivateComponent Component={Home} />,
+        element:<Home/>,
       },
       {
         path:"shop",

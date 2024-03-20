@@ -29,7 +29,9 @@ export const action = async ({ request }) => {
 
 function Profile() {
   scrollToTop();
-
+  let userDataString = localStorage.getItem("userData");
+  let userData = JSON.parse(userDataString);
+ if(!userData) userData = "";
   const formData=[];
   const navigate = useNavigate();
   async function logoutFun() {
@@ -53,17 +55,17 @@ function Profile() {
         <Form method="post" action="#">
           <div className="form-group">
             <label>Change Name</label>
-            <input name="fullname" value={formData.fullname}   placeholder={localStorage.fullname}/>
+            <input name="fullname" value={formData.fullname}   placeholder={userData.fullname}/>
           </div>
 
           <div className="form-group">
             <label>Change Email</label>
-            <input name="email" value={formData.email}   placeholder={localStorage.email}/>
+            <input name="email" value={formData.email}   placeholder={userData.email}/>
           </div>
 
           <div className="form-group">
             <label>Change Phone</label>
-            <input name="phone" value={formData.phone}   placeholder={localStorage.phone}/>
+            <input name="phone" value={formData.phone}   placeholder={userData.phone}/>
           </div>
 
           <div className="form-group">

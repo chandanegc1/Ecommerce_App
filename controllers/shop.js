@@ -141,7 +141,8 @@ export const login = async (req, res) => {
       // secure: true
       expiresIn:'100d'
     });
-    res.status(200).json({ msg: 'User logged in' });
+    user.password = null;
+    res.status(200).json({ user ,msg: 'User logged in' });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ msg: 'Internal server error' });

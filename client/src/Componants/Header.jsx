@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import {toast} from "react-toastify"
 
 function Header(){
   const {cartCount} = useSelector(state => state.custom);
@@ -13,6 +14,11 @@ function Header(){
   const toggleVisibility = () => {
     disp ==="none" ?setDisp("flex"):setDisp("none");
   };
+
+  const notify = ()=>{
+    if(!login)
+    toast.error("Please Login..")
+  }
   return (
     <>
       <header>
@@ -28,9 +34,9 @@ function Header(){
                         <Link to={"/Blog"}>    <li>Blog</li>    </Link>
                         <Link to={"/About"}>   <li>About</li>   </Link>
                         <Link to={"/contact"}> <li>Contact</li>   </Link>
-                        {login ?<Link to={"/profile"} ><li>Profile</li>   </Link>:null}
+                        {login ?<Link to={"/profile"} onClick={notify}><li>Profile</li>   </Link>:null}
                     </ul>
-                        <Link to={"/Cart"}>
+                        <Link to={"/Cart"} onClick={notify}>
                         <div className='cart' style={{background:"transparent"}}>
                         {login?<p className='count'><b>{cartCount}</b></p>:null}
                            <img src="https://cdn-icons-png.flaticon.com/128/4903/4903482.png" alt="Cart"/>
