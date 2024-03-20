@@ -96,7 +96,7 @@ const Registration = () => {
               onChange={handleInputChange}
               type="password"
               placeholder="Confirm password"
-              min={8}
+              min={4}
               max={20}
               required="true"
             />

@@ -43,7 +43,7 @@ const Login = () => {
                 name="email"
                 id="email"
                 type="email"
-                defaultValue="chandanegc@gmail.com"
+                // defaultValue="chandanegc@gmail.com"
                 placeholder="Enter your email"
                 required
               />
@@ -52,7 +52,7 @@ const Login = () => {
               <input
                 name="password"
                 type="password"
-                defaultValue="1234"
+                // defaultValue="1234"
                 autoFill
                 placeholder="Enter password"
                 required
