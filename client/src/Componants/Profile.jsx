@@ -30,6 +30,7 @@ export const action = async ({ request }) => {
 function Profile() {
   scrollToTop();
   let userDataString = localStorage.getItem("userData");
+  if(!userDataString) userDataString = "null";
   let userData = JSON.parse(userDataString);
  if(!userData) userData = "";
   const formData=[];
