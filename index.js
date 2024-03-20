@@ -17,8 +17,8 @@ app.use(express.urlencoded({extended:false}));
 
 import router from "./routers/shop.js"
 import authRouter from "./routers/authRouter.js"
-app.use(router);   
-app.use(authRouter);
+app.use("/api/v1" ,router);   
+app.use("/api/v1",authRouter);
 
 
         // server create 
