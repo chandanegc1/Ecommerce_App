@@ -162,13 +162,7 @@ export const logout = async(req , res)=>{
 
 export const updateUserPrfl = async (req, res) => {
   try {
-    const user = await Register.findOneAndUpdate({ email: req.params.id });
-    if (!user) {
-      res.status(404).json({
-        success: false,
-        message: "user does not exist",
-      });
-    }
+    const user = await Register.findOne({ _id: req.user.userId});
     const { fullname, email, password, phone } = req.body;
     if (fullname) {
       user.fullname = fullname;
@@ -184,9 +178,8 @@ export const updateUserPrfl = async (req, res) => {
     if (phone) {
       user.phone = phone;
     }
-
     await user.save();
-    res.send(user);
+    res.status(200).json({user, msg:"update successfully.."});
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -237,7 +230,6 @@ export const PostComment = async (req , res)=>{
       message: error.message,
     });
   }
-
 }
 
 export const getComment = async (req , res)=>{

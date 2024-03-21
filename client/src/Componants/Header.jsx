@@ -5,7 +5,8 @@ import {toast} from "react-toastify"
 
 function Header(){
   const {cartCount} = useSelector(state => state.custom);
-  let login = localStorage.getItem('user');
+  let login = localStorage.getItem('userData');
+  login = JSON.parse(login);
   let prfl = "none";
   if(login){
     prfl = "block";
@@ -23,7 +24,11 @@ function Header(){
     <>
       <header>
             <div className="nameicon">
-            <li>{login ?<Link title='Profile' to={"/"}> <div className="prfl" title='Profile Setting' ><p><b>{localStorage.fullname}</b></p></div></Link>: <Link title='Login' to={"/login"}> <img src='login.png'/> <p>Login</p></Link>}</li>
+            <li>{login ?<Link title='Profile' to={"/"}> <div className="prfl" title='Profile Setting' ><p><b>{login.fullname}</b></p></div></Link>: <Link title='Login' to={"/login"}> <img src='login.png'/> <p>Login</p></Link>}</li>
+            </div>
+            <div className="search">
+              <input id="srchInput" placeholder="Search..." type="text" />
+              <button></button>
             </div>
             <div className="container">
                 <nav className="logoname" >

@@ -35,11 +35,13 @@ ul .cart{
     font-size: 10px;
   }
 }
+
 .search{
   display: flex;
   margin-top: 5px;
-  input{
+  #srchInput{
     height: 14px;
+    width: 18vw;
   }
   input:focus{
     outline: none;
@@ -49,6 +51,13 @@ ul .cart{
     width: 9vw;
     max-width: 70px;
     margin-left: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px gray;
+    border-radius: 5px;
+    border: 0.2px solid gray;
+    font-style: italic;
+  }:active{
+    box-shadow: none;
   }
 }
 .count{
