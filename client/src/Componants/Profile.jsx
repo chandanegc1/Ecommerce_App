@@ -35,7 +35,7 @@ function Profile() {
     await axios(logout);
     localStorage.clear();
     toast.success("You're Successfully Log-out .....");
-    navigate("/login");
+    navigate("/");
     window.location.reload(); 
   }
 
