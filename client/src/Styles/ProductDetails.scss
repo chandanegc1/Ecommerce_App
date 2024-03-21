@@ -54,6 +54,12 @@
       cursor: pointer;
     }
   }
+  
+  .cmntinpt{
+    input:focus{
+      outline: none;
+    }
+  }
 
   .comment{
     overflow-x: scroll;

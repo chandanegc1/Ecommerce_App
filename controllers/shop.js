@@ -179,6 +179,7 @@ export const updateUserPrfl = async (req, res) => {
       user.phone = phone;
     }
     await user.save();
+    user.password = "null";
     res.status(200).json({user, msg:"update successfully.."});
   } catch (error) {
     res.status(500).json({

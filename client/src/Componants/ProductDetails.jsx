@@ -13,17 +13,11 @@ const ProductDetails = () => {
   let login = localStorage.getItem("user");
 
 
-  const ItemSize = [
-    {
-      size:"M"
-    },
-    {
-      size:"L"
-    },
-    {
-      size:"x"
-    }
-  ]
+  const ItemSize ={
+      M:"M",
+      L:"L",
+      XL:"XL"
+  }
 
   const [size , setSize] = useState()
   const addToCart = (e) => {
@@ -136,6 +130,7 @@ const ProductDetails = () => {
       </div>
 
       {login ?<form className="commentInput" onSubmit={commentSubmit}>
+        <div className="cmntinpt">
         <input
           type="text"
           value={commentinput.comment}
@@ -144,6 +139,7 @@ const ProductDetails = () => {
           onChange={handleCommentInput}
           required
         />
+        </div>
         <button style={{margin:"5px"}}>Comment</button>
       </form>:<h4 style={{color:"red"}}>First Login Then Comment about this Product...</h4>}
 

@@ -30,6 +30,7 @@ import "./Styles/Registration.scss";
 import "./Styles/ProductDetails.scss";
 import "./Styles/Profile.scss";
 import "./Styles/Loading.scss";
+import "./Styles/Search.scss";
 
 // import axios from "axios";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";

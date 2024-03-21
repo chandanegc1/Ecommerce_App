@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { logout, usersurl } from "./APIUrl";
+import { logout, updateUser } from "./APIUrl";
 import axios from "axios";
 import { Form, useNavigate} from "react-router-dom";
 import scrollToTop from "./goToTop";
@@ -8,17 +8,13 @@ import {toast} from "react-toastify";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData) ;
-  console.log(data);
+  // console.log(data);
 
   try {
-      const url = usersurl+"/chandanegc@gmail.com";
-      const response = await axios.put(url, data);
-
-      localStorage.setItem("fullname" ,response.data.fullname)
-      localStorage.setItem("email" , response.data.email);
-      localStorage.setItem("phone" , response.data.phone);
+      const url = updateUser;
+      const resp = await axios.put(url, data);
+      localStorage.setItem("userData" , JSON.stringify(resp.data.user));
       toast.success("Update success..");
-      window.location.reload();
       return null;
       
   } catch (error) {

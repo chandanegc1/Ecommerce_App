@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import {toast} from "react-toastify"
+import Search from "./Search";
 
 function Header(){
   const {cartCount} = useSelector(state => state.custom);
@@ -26,10 +27,7 @@ function Header(){
             <div className="nameicon">
             <li>{login ?<Link title='Profile' to={"/"}> <div className="prfl" title='Profile Setting' ><p><b>{login.fullname}</b></p></div></Link>: <Link title='Login' to={"/login"}> <img src='login.png'/> <p>Login</p></Link>}</li>
             </div>
-            <div className="search">
-              <input id="srchInput" placeholder="Search..." type="text" />
-              <button></button>
-            </div>
+            <Search/>
             <div className="container">
                 <nav className="logoname" >
                     <ul>
@@ -76,40 +74,4 @@ function Header(){
     </>
   )
 }
-export default Header
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Header;
