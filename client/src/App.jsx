@@ -80,7 +80,7 @@ const router = createBrowserRouter([
       {
         path:"cart",
         loader:cartLoader,
-        element:<PrivateComponent Component={Cart} />
+        element:<Cart/>
       },
       {
         path:"profile",
