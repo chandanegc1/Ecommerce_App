@@ -93,9 +93,9 @@ const ProductDetails = () => {
           <h3>{Product.price}</h3>
           <select name="" id="">
             <option value="">Select Size</option>
-            {ItemSize.map(item => (
+            {/* {ItemSize.map(item => (
               <option value="">{item.size}</option>
-            ))}
+            ))} */}
           </select>
           <div style={{ display: "flex" }} className="cartbtn">
             <div>
