@@ -5,30 +5,27 @@ import { allcarturl, carturl, getCartUrl } from "./APIUrl";
 import { useDispatch } from "react-redux"; 
 import { redirect, useLoaderData } from "react-router-dom";
 
-export const loader = async(req , res)=>{
-  try {
-    const {data} = await axios.get(getCartUrl);
-    return data;
-  } catch (error) {
-    console.log(error);
-    return redirect("/");
-  }
-}
-
 function Cart() {
   scrollToTop();
+
+  const [Cartdata , setCartData] = useState([{nucll:null}]);
+  const fun = async()=>{
+    const {data} =await axios(getCartUrl);
+    setCartData(data);
+    console.log(data);
+  }
+  useEffect(()=>{
+    try {
+      fun();
+    } catch (error) {
+      console.log(error);
+    }
+  },[]);
+
   let total = 0;
   const [priceCount, setPriceCount] = useState(0);
   total += priceCount;
-
-  const [users, setUsers] = useState([]);
-  const user = useLoaderData();
-  useEffect(() => {
-    setUsers(user);
-  }, [user]);
-
-  const cartprice = users.reduce((ac , currval)=> ac+currval.price ,0)
-  
+  const cartprice = Cartdata.reduce((ac , currval)=> ac+currval.price ,0)
   useEffect(() => {
     setPriceCount(cartprice);
   });
@@ -43,7 +40,7 @@ function Cart() {
 
   const handleDeleteItem = async (e) => {
       await axios.delete(carturl+"/"+e);
-      setUsers((prevUsers) => prevUsers.filter((user) => user._id !== e));
+      setCartData((prevUsers) => prevUsers.filter((Cartdata) => Cartdata._id !== e));
       reducxfun();
   };
 
@@ -55,9 +52,10 @@ function Cart() {
   }
   const clearAllCart = async()=>{
       await axios.delete(allcarturl);
-      setUsers((prevUsers) => prevUsers.filter((user) =>false));
+      setCartData((prevUsers) => prevUsers.filter((user) =>false));
       reducxfunc();
   }
+  
   return (
     <>
       <div className="section123">
@@ -78,7 +76,7 @@ function Cart() {
               </tr>
             </thead>
             <div className="scroll">
-              { users.map((Product) => (
+              { Cartdata.map((Product) => (
                 <tbody>
                   <td
                     className="delete"

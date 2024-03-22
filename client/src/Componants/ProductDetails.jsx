@@ -40,7 +40,6 @@ const ProductDetails = () => {
         let url =` ${CommentUrl}/${Product._id}`;
         const getdata = await axios.get(url);
         setComment(getdata.data);
-        console.log(getdata.data);
       } catch (error) {
         console.log(error);
       }
@@ -91,9 +90,6 @@ const ProductDetails = () => {
           <h1>{Product.name}</h1>
           <h2>{Product.brand}</h2>
           <h3>{Product.price}</h3>
-          <select name="" id="">
-            <option value="">Select Size</option>
-          </select>
           <div style={{ display: "flex" }} className="cartbtn">
             <div>
               <input

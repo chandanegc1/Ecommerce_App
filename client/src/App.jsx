@@ -37,7 +37,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { action as contactAction } from "./Componants/Contact";
 import { action as loginAction } from "./Componants/Login";
 import { action as profileAction } from "./Componants/Profile";
-import {loader as cartLoader} from "./Componants/Cart"
 import {loader as HomeLayoutLoader} from "./Componants/HomeLayout"
 
 const router = createBrowserRouter([
@@ -79,7 +78,6 @@ const router = createBrowserRouter([
       },
       {
         path:"cart",
-        loader:cartLoader,
         element:<Cart/>
       },
       {
