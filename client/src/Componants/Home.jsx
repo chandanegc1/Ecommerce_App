@@ -8,6 +8,7 @@ import axios from "axios";
 import { getCartUrl} from "./APIUrl";
 
 function Home() {
+  // window.location.reload();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);

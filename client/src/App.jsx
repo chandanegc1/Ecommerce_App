@@ -35,7 +35,6 @@ import "./Styles/Search.scss";
 // import axios from "axios";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { action as contactAction } from "./Componants/Contact";
-import { action as loginAction } from "./Componants/Login";
 import { action as profileAction } from "./Componants/Profile";
 import {loader as HomeLayoutLoader} from "./Componants/HomeLayout"
 
@@ -74,7 +73,6 @@ const router = createBrowserRouter([
       {
         path:"login",
         element:<Login />,
-        action:loginAction
       },
       {
         path:"cart",

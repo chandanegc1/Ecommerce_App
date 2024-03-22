@@ -3,7 +3,6 @@ import axios from "axios";
 import scrollToTop from "./goToTop";
 import { allcarturl, carturl, getCartUrl } from "./APIUrl";
 import { useDispatch } from "react-redux"; 
-import { redirect, useLoaderData } from "react-router-dom";
 
 function Cart() {
   scrollToTop();
