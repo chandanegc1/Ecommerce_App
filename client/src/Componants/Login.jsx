@@ -28,10 +28,11 @@ const Login = () => {
         event.preventDefault();
         try {
           const res =await axios.post(login, formData);
-          toast.success(res.data.msg);
           localStorage.setItem("userData" , JSON.stringify(res.data.user));
+          localStorage.setItem("user" , res.data.user.email);
           navigate("/");
           window.location.reload();
+          toast.success(res.data.msg);
         } catch (error) {
           toast.error("something went wrong..");
         }
