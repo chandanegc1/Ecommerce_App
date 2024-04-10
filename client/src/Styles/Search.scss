@@ -7,18 +7,10 @@
     }
     input:focus{
       outline: none;
+
     }
-    button{
-      height: 35px; 
-      width: 9vw;
-      max-width: 70px;
-      margin-left: 5px;
-      cursor: pointer;
-      box-shadow: 1px 1px gray;
-      border-radius: 5px;
-      border: 0.2px solid gray;
-      font-style: italic;
-    }:active{
-      box-shadow: none;
+    input{
+      border-radius: 18px;
     }
+   
   }

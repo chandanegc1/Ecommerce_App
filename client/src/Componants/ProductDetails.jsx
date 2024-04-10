@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CommentUrl, carturl } from "./APIUrl";
 import { toast } from "react-toastify";
+import { FaCartPlus } from "react-icons/fa";
 
 const ProductDetails = () => {
   const [comment, setComment] = useState([]);
@@ -100,12 +101,7 @@ const ProductDetails = () => {
                 style={{ height: 40, width: 40, border: "1px solid" }}
               />
             </div>
-            <button
-              onClick={() => addToCart(Product)}
-              style={{ backgroundColor: "#088178", borderRadius: 2 }}
-            >
-              Add to Cart
-            </button>
+          <FaCartPlus onClick={() => addToCart(Product)} className="FacartIcon"/>
           </div>
           <div className="P-details">
             <h3>Product Details</h3>

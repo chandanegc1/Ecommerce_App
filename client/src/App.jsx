@@ -31,6 +31,8 @@ import "./Styles/ProductDetails.scss";
 import "./Styles/Profile.scss";
 import "./Styles/Loading.scss";
 import "./Styles/Search.scss";
+import "./Styles/icon.scss";
+
 
 // import axios from "axios";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -38,6 +40,7 @@ import { action as contactAction } from "./Componants/Contact";
 import { action as profileAction } from "./Componants/Profile";
 import {loader as HomeLayoutLoader} from "./Componants/HomeLayout"
 
+import Test from "./Componants/Test";
 const router = createBrowserRouter([
   {
     path:"/",
@@ -86,6 +89,9 @@ const router = createBrowserRouter([
       {
         path:"ProductDetails",
         element:<ProductDetails /> 
+      },{
+        path:"test",
+        element:<Test/>
       }
     ]
   },

@@ -1,10 +1,11 @@
 import React from "react";
+import { FaSearch } from "react-icons/fa";
 
 const Search = () => {
   return (
     <div className="search">
       <input id="srchInput" placeholder="Search..." type="text" />
-      <button>Search</button>
+      <FaSearch className="iconsize"/>
     </div>
   );
 };

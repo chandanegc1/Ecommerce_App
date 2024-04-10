@@ -1,4 +1,4 @@
-import { currentUser, login, logout, updateUserPrfl, userRegister } from "../controllers/shop.js";
+import { currentUser, login, logout, updateUserPrfl, userRegister } from "../controllers/auth.js";
 import express from 'express'
 import { userAuth } from "../middleware/authmiddleware.js";
 
