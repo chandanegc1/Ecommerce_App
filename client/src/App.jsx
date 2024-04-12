@@ -12,36 +12,17 @@ import {
   ProductDetails,
   PrivateComponent,
   HomeLayout
-} from "./Componants";
-
-import "./Styles/Home.scss";
-import "./Styles/Features.scss";
-import "./Styles/Products.scss";
-import "./Styles/SignUp.scss";
-import "./Styles/Footer.scss";
-import "./Styles/Header.scss";
-import "./Styles/Shop.scss";
-import "./Styles/Blog.scss";
-import "./Styles/About.scss";
-import "./Styles/Contact.scss";
-import "./Styles/Cart.scss";
-import "./Styles/Nextbtn.scss";
-import "./Styles/Registration.scss";
-import "./Styles/ProductDetails.scss";
-import "./Styles/Profile.scss";
-import "./Styles/Loading.scss";
-import "./Styles/Search.scss";
-import "./Styles/icon.scss";
+} from "./Pages";
 
 
 // import axios from "axios";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { action as contactAction } from "./Componants/Contact";
-import { action as profileAction } from "./Componants/Profile";
+import { action as contactAction } from "./Pages/Contact";
+import { action as profileAction } from "./Pages/Profile";
 import {loader as HomeLayoutLoader} from "./Componants/HomeLayout"
 
 import Test from "./Componants/Test";
-const router = createBrowserRouter([
+const router = createBrowserRouter([ 
   {
     path:"/",
     element:<HomeLayout />,

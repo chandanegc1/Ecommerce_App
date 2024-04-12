@@ -15,11 +15,9 @@ export const loader = async()=>{
     return error;
   }
 }
-
 const HomeLayout = () => {
   const data = useLoaderData();
   const dispatch = useDispatch();
-
   useEffect(()=>{
     dispatch({
       type:"setCartCount",

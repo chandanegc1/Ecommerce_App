@@ -12,11 +12,10 @@ function Products(props) {
   const [loading, setLoading] = useState(false);
   let login = localStorage.getItem("user");
 
-
   useEffect(() => {
     (async ()=>{
-        const {data} = await axios.get(producturl);
-        setUsers(data.product);
+        const data = await axios.get(producturl);
+        setUsers(data.data);
         setLoading(true);
     })();
   }, []);

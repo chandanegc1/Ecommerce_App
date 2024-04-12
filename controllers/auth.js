@@ -42,6 +42,7 @@ export const userRegister = async (req, res) => {
         // secure: true
         expiresIn:'100d'
       });
+      user.password = "null";
       res.status(200).json({user , msg: 'User logged in' });
     } catch (error) {
       res.status(500).json({ msg: 'Internal server error' });
@@ -63,6 +64,7 @@ export const userRegister = async (req, res) => {
   export const currentUser = async(req , res)=>{
     try {
       const user = await Register.findOne({_id:req.user.userId});
+      user.password = "null";
       res.status(200).json({user});
     } catch (error) {
       res.status(400).json({msg:"something went wrong"}); 

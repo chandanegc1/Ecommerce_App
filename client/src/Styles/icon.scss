@@ -8,8 +8,19 @@
 .FacartIcon{
     width: 35px;
     height: 32px;
-    border: 1px solid;
     padding: 5px;
-    border-left: none;
     cursor: pointer;
+    color:#088178;
+    box-shadow: 2px 2px 2px gray;
+    margin: 8px 0 0 0;
+    border-radius: 5px;
+}
+.FacartIcon:active{
+    box-shadow: none;
+    color:#0c4541;
+}
+.cartCancel{
+    width: 25px;
+    height: 25px;
+    color: rgb(69, 20, 20);
 }

@@ -1,7 +1,7 @@
 import express from "express";
 import { userAuth } from "../middleware/authmiddleware.js";
 import {clearAllCart , getCartCount , cartData , postCartData , deleteCart , } from "../controllers/cart.js";
-import {allProduct , postProduct} from '../controllers/product.js';
+import {allProduct ,  postProduct} from '../controllers/product.js';
 import {postMessage ,getComment , PostComment } from "../controllers/utils.js"
 
 const router = express.Router();
@@ -16,4 +16,4 @@ router.route("/allcart").delete(userAuth, clearAllCart);
 router.route("/message").post(userAuth, postMessage);
 router.route("/comment/:id").get(getComment).post(userAuth , PostComment);
 
-export default router;  
+export default router; 

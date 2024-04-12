@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "build": "npm install"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon index.js",
+    "client": "cd client && npm start",
+    "setup-project": "npm i && cd client && npm i"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -27,5 +28,8 @@
   "description": "this is a shopping app",
   "main": "index.js",
   "author": "chandan",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
