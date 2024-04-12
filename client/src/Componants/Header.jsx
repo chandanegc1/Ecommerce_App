@@ -31,7 +31,7 @@ function Header(){
             <div className="container">
                 <nav className="logoname" >
                     <ul>
-                        <li className='cancel' onClick={toggleVisibility}><img src="https://cdn-icons-png.flaticon.com/512/1828/1828774.png"/></li>
+                        <li className='cancel' onClick={toggleVisibility}><img src=""/></li>
                         <Link to={"/"}>        <li>Home</li>    </Link>
                         <Link to={"/Shop"}>    <li>Shop</li>    </Link>
                         <Link to={"/Blog"}>    <li>Blog</li>    </Link>
@@ -42,17 +42,17 @@ function Header(){
                         <Link to={"/Cart"} onClick={notify}>
                         <div className='cart' style={{background:"transparent"}}>
                         {login?<p className='count'><b>{cartCount}</b></p>:null}
-                           <img src="https://cdn-icons-png.flaticon.com/128/4903/4903482.png" alt="Cart"/>
+                           <img src="" alt="Cart"/>
                         </div>
                         </Link>
                          
                     <div className="menu" onClick={toggleVisibility}>
-                        <img src="https://cdn-icons-png.flaticon.com/128/5259/5259008.png"  alt=""/>
+                        <img src=""  alt=""/>
                     </div>
                     
                     <div className="smallscreen">
                         <ul onClick={toggleVisibility} style={{display:disp}}>
-                            <li className='cancel' onClick={toggleVisibility}><img src="https://cdn-icons-png.flaticon.com/512/1828/1828774.png"/></li>
+                            <li className='cancel' onClick={toggleVisibility}><img src=""/></li>
                             <Link to={"/"}>        <li>Home</li>    </Link>
                             <Link to={"/Shop"}>    <li>Shop</li>    </Link>
                             <Link to={"/Blog"}>    <li>Blog</li>    </Link>
@@ -62,7 +62,7 @@ function Header(){
                              <Link to={"/Cart"}>
                             <li><div className='cart'>
                             {login?<p className='counti'><b>{cartCount}</b></p>:null}
-                               <img src="https://cdn-icons-png.flaticon.com/128/4903/4903482.png" alt="Cart"/>
+                               <img src="" alt="Cart"/>
                             </div></li>
                             </Link>
                             
@@ -74,4 +74,4 @@ function Header(){
     </>
   )
 }
-export default Header;
+export default Header; 

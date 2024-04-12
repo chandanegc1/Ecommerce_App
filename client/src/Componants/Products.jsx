@@ -71,7 +71,7 @@ function Products(props) {
                   <div className="price">
                     <h4>{Product.price}</h4>
                   </div>
-                  {props.cart? <div>
+                  {/* {props.cart? <div>
                     <button>
                      <Link to="/ProductDetails"><img
                         className="shop-cart"
@@ -80,7 +80,7 @@ function Products(props) {
                         alt=""
                       /></Link> 
                     </button>
-                  </div>:null}
+                  </div>:null} */}
                 </div>
               </div>
             </div>

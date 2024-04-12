@@ -7,7 +7,7 @@ function Footer() {
         <div className="contact">
             <img src="img/cc.png" alt="" style={{width:'40px',borderRadius:'100%'}} />
             <h4>Address</h4><p>INDIA</p>
-            <h4>Contact</h4><a target='blank' href="https://www.instagram.com/chandanegc/"><img src="instagram.png" alt="" /><br /><>Insta</></a>
+            {/* <h4>Contact</h4><a target='blank' href="https://www.instagram.com/chandanegc/"><img src="instagram.png" alt="" /><br /><>Insta</></a> */}
         </div>
         <div className="discribe">
             <div className="About address">

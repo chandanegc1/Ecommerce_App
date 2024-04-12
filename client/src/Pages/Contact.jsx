@@ -35,8 +35,9 @@ function Contact() {
                 <p>Monday to Sutarday 9:00am to 5:00pm</p>
             </div>
             <div className="mappart" >
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28467.04230827381!2d83.83227537677332!3d26.891423506198343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993f177ae5ccb9f%3A0x4caeec7352469302!2sRamkola%2C%20Uttar%20Pradesh%20274305!5e0!3m2!1sen!2sin!4v1685215148949!5m2!1sen!2sin" 
-                    width="100%" height="300vw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28467.04230827381!2d83.83227537677332!3d26.891423506198343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993f177ae5ccb9f%3A0x4caeec7352469302!2sRamkola%2C%20Uttar%20Pradesh%20274305!5e0!3m2!1sen!2sin!4v1685215148949!5m2!1sen!2sin" 
+            width="100%" height="300vw" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+
             </div>
         </div>
        <div className="form"  >
