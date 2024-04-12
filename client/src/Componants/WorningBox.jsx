@@ -18,5 +18,4 @@ const WorningBox = () => {
     </>
   )
 }
-
 export default WorningBox
