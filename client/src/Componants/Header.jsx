@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import {toast} from "react-toastify"
 import Search from "./Search";
+import { BiCart } from "react-icons/bi";
 
 function Header(){
   const {cartCount} = useSelector(state => state.custom);
@@ -42,7 +43,7 @@ function Header(){
                         <Link to={"/Cart"} onClick={notify}>
                         <div className='cart' style={{background:"transparent"}}>
                         {login?<p className='count'><b>{cartCount}</b></p>:null}
-                           <img src="" alt="Cart"/>
+                           <BiCart className="BiCart"/>
                         </div>
                         </Link>
                          

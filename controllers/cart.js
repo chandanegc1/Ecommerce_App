@@ -72,3 +72,13 @@ export const clearAllCart = async (req, res) => {
     }
     
   }
+
+  export const coupon = async()=>{
+    try {
+      const data = req.body;
+      if(data == "XYZNM") res.status.json({data:true});
+      else res.status.json({data:false});
+    } catch (error) {
+      console.log(error);
+    }
+  }

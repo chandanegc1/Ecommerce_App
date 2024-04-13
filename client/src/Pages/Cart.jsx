@@ -46,7 +46,7 @@ function Cart() {
         <h1>#readmore</h1>
         <p>Read all case studies about our product!</p>
       </div>
-      <div className="cart">
+      <div className="cart overflowhandle">
         <table width="100%" className="tbl">
           <thead>
             <tr>

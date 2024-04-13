@@ -21,20 +21,20 @@ function Products(props) {
   }, []);
 
   // Add data in cart
-  const addToCart = (e) => {
-    if (login) {
-      CartRedux();
-      const id = localStorage.getItem("id");
-      const {name, img, brand, price } = e;
-      axios
-        .post(carturl, { name, img, brand, price ,id })
-        .then(() => {
-          toast.success(e.name + " Added in Cart");
-        })
-    }else{
-      navigate("/login")
-    }
-  };
+  // const addToCart = (e) => {
+  //   if (login) {
+  //     CartRedux();
+  //     const id = localStorage.getItem("id");
+  //     const {name, img, brand, price } = e;
+  //     axios
+  //       .post(carturl, { name, img, brand, price ,id })
+  //       .then(() => {
+  //         toast.success(e.name + " Added in Cart");
+  //       })
+  //   }else{
+  //     navigate("/login")
+  //   }
+  // };
 
   const navigate = useNavigate();
 

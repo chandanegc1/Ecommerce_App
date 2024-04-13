@@ -1,16 +1,18 @@
 .search{
     display: flex;
-    margin-top: 5px;
+    padding: 5px;
     #srchInput{
       height: 14px;
-      width: 18vw;
+      width: 30vw;
     }
     input:focus{
       outline: none;
-
     }
     input{
       border-radius: 18px;
     }
    
+  }
+  .cursor{
+    cursor: pointer;
   }
