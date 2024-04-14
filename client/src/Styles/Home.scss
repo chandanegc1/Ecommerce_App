@@ -6,7 +6,7 @@
   background-image: url(/Assets/img/hero4.png);
   background-size: cover;
   background-position: center;
-  height: 85vh;
+  height: 73vh;
   width: 90%;
   background-position:top 25% right 0px;
   text-align: center;
@@ -27,8 +27,10 @@
   background-image: url(/Assets/img/button.png);
   background-size: cover;
   background-position: center;
+  font-size: 20px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
   color: #ffffff;
 }
   .section4{

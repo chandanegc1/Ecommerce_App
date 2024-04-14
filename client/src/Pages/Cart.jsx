@@ -6,40 +6,55 @@ import { useDispatch } from "react-redux";
 import { GiCancel } from "react-icons/gi";
 
 function Cart() {
-  scrollToTop();
+  const [Cartitems , setCartitems] = useState([]);
+  const [cartData , setCartdata] = useState({TotalPrice:0,
+    couponStatus:false,
+    CartItemsPrice:0,
+    couponDiscount:0,
+    deliveryCharge:0,
+    deliveryChargeStatus:true,});
 
-  const [Cartdata , setCartData] = useState([]);
-  
+  const [coupon,setcoupon] = useState("");
+  const [check , setCheck] = useState(false);
   useEffect(() => {
     const fun = async () => {
-        const { data } = await axios(getCartUrl);
-        setCartData(data);
+      const res = await axios(getCartUrl+coupon);
+      const {cartitem} = res.data;
+      console.log(res.data);
+      setCartitems(cartitem);
+      setCartdata(res.data);
     };
     fun();
-  }, []);
+  }, [check]);
 
+  const couponhandle = ()=>{
+    let couponRef = document.getElementById("couponInput");
+    setcoupon("?coupon="+couponRef.value);
+    couponRef.value = "";
+    setCheck(!check);
+  }
+  
   const dispatch = useDispatch();
   
   const handleDeleteItem = async (id) => {
     await axios.delete(carturl + "/" + id);
-    setCartData(prevCartData => prevCartData.filter(product => product._id !== id));
+    setCartitems(prevCartitems => prevCartitems.filter(product => product._id !== id));
     dispatch({
       type: "cartCount",
       payload: -1
     });
+    setCheck(!check);
   };
 
   const clearAllCart = async () => {
     await axios.delete(allcarturl);
-    setCartData([]);
+    setCartitems([]);
     dispatch({
       type: "setCartCount",
       payload: 0
     });
+    setCheck(!check);
   };
-  
-  const totalPrice = Cartdata.reduce((total, product) => total + product.price, 0);
-  
   return (
     <>
       <div className="section123">
@@ -59,7 +74,7 @@ function Cart() {
             </tr>
           </thead>
           <tbody>
-            {Cartdata.map((product) => (
+            {Cartitems.map((product) => (
               <tr key={product._id}>
                 <td
                   className="delete"
@@ -86,8 +101,8 @@ function Cart() {
         <div className="coupon">
           <h2>Apply Coupon</h2>
           <div className="inp">
-            <input type="text" placeholder="Enter coupon..." />
-            <button>Apply</button>
+            <input id="couponInput" type="text" placeholder="Enter coupon..." />
+            <button onClick={couponhandle}>Apply</button>
           </div>
         </div>
         <div className="subtotal">
@@ -96,19 +111,19 @@ function Cart() {
             <tbody>
               <tr>
                 <td>Cart Subtotal</td>
-                <td>{totalPrice}$</td>
+                <td>{cartData.CartItemsPrice}$</td>
               </tr>
               <tr>
                 <td>Delivery Charge</td>
-                <td>1$</td>
+                <td>{cartData.deliveryChargeStatus?cartData.deliveryCharge:0}$</td>
               </tr>
               <tr>
                 <td>Discount</td>
-                <td>2$</td>
+                <td>{cartData.couponStatus ? cartData.couponDiscount:0}$</td>
               </tr>
               <tr style={{ color: "white", background: "#088178" }}>
                 <td>TOTAL</td>
-                <td>{totalPrice + 1 + 2}$</td>
+                <td>{cartData.TotalPrice}$</td>
               </tr>
             </tbody>
           </table>
