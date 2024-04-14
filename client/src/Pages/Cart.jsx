@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { allcarturl, carturl, getCartUrl } from "../Componants/APIUrl";
 import { useDispatch } from "react-redux"; 
@@ -6,26 +6,41 @@ import { GiCancel } from "react-icons/gi";
 
 function Cart() {
   const [Cartitems , setCartitems] = useState([]);
-  const [cartData , setCartdata] = useState({TotalPrice:0,
+  const [cartData , setCartdata] = useState({
+    TotalPrice:0,
     couponStatus:false,
     CartItemsPrice:0,
     couponDiscount:0,
     deliveryCharge:0,
-    deliveryChargeStatus:true,});
+    deliveryChargeStatus:true,
+  });
 
   const [coupon,setcoupon] = useState("");
   const [check , setCheck] = useState(false);
+  
+  const mounted = useRef(true);
   useEffect(() => {
-    const fun = async () => {
-      const res = await axios(getCartUrl+coupon);
-      const {cartitem} = res.data;
-      setCartitems(cartitem);
-      setCartdata(res.data);
+    return () => {
+      mounted.current = false;
     };
-    fun();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios(getCartUrl+coupon);
+        const {cartitem} = res.data;
+        if (!mounted.current) return;
+        setCartitems(cartitem);
+        setCartdata(res.data);
+      } catch (error) {
+        console.error("Error fetching cart data:", error);
+      }
+    };
+    fetchData();
   }, [check]);
 
-  const couponhandle = ()=>{
+  const couponhandle = () => {
     let couponRef = document.getElementById("couponInput");
     setcoupon("?coupon="+couponRef.value);
     couponRef.value = "";
@@ -35,24 +50,35 @@ function Cart() {
   const dispatch = useDispatch();
   
   const handleDeleteItem = async (id) => {
-    await axios.delete(carturl + "/" + id);
-    setCartitems(prevCartitems => prevCartitems.filter(product => product._id !== id));
-    dispatch({
-      type: "cartCount",
-      payload: -1
-    });
-    setCheck(!check);
+    try {
+      await axios.delete(carturl+"/"+id);
+      if (!mounted.current) return;
+      setCartitems(prevCartitems => prevCartitems.filter(product => product._id !== id));
+      dispatch({
+        type: "cartCount",
+        payload: -1
+      });
+      setCheck(!check);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
   };
 
   const clearAllCart = async () => {
-    await axios.delete(allcarturl);
-    setCartitems([]);
-    dispatch({
-      type: "setCartCount",
-      payload: 0
-    });
-    setCheck(!check);
+    try {
+      await axios.delete(allcarturl);
+      if (!mounted.current) return;
+      setCartitems([]);
+      dispatch({
+        type: "setCartCount",
+        payload: 0
+      });
+      setCheck(!check);
+    } catch (error) {
+      console.error("Error clearing cart:", error);
+    }
   };
+
   return (
     <>
       <div className="section123">
@@ -61,37 +87,37 @@ function Cart() {
       </div>
       
       <div className="cart-add">
-      <div className="cart overflowhandle">
-        <table width="100%" className="tbl">
-          <thead>
-            <tr>
-              <td>Remove</td>
-              <td>Image</td>
-              <td>Products</td>
-              <td>Price</td>
-              <td>Quantity</td>
-            </tr>
-          </thead>
-          <tbody>
-            {Cartitems.map((product) => (
-              <tr key={product._id}>
-                <td
-                  className="delete"
-                  onClick={() => handleDeleteItem(product._id)}
-                  style={{ cursor: "pointer" }}
-                ><GiCancel className='cartCancel'/></td>
-                <td><img src={product.img} alt="" /></td>
-                <td>{product.name}</td>
-                <td>{product.price} $</td>
-                <td><input type="text" name="" id="quant" value="1" readOnly /></td>
-                <td></td>
+        <div className="cart overflowhandle">
+          <table width="100%" className="tbl">
+            <thead>
+              <tr>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Products</td>
+                <td>Price</td>
+                <td>Quantity</td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {Cartitems.map((product) => (
+                <tr key={product._id}>
+                  <td
+                    className="delete"
+                    onClick={() => handleDeleteItem(product._id)}
+                    style={{ cursor: "pointer" }}
+                  ><GiCancel className='cartCancel'/></td>
+                  <td><img src={product.img} alt="" /></td>
+                  <td>{product.name}</td>
+                  <td>{product.price} $</td>
+                  <td><input type="text" name="" id="quant" value="1" readOnly /></td>
+                  <td></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      <div className="subtotal">
+        <div className="subtotal">
           <h2>Cart Total</h2>
           <table>
             <tbody>
@@ -101,11 +127,11 @@ function Cart() {
               </tr>
               <tr>
                 <td>Delivery Charge</td>
-                <td>{cartData.deliveryChargeStatus?cartData.deliveryCharge:0}$</td>
+                <td>{cartData.deliveryChargeStatus ? cartData.deliveryCharge : 0}$</td>
               </tr>
               <tr>
                 <td>Discount</td>
-                <td>{cartData.couponStatus ? cartData.couponDiscount:0}$</td>
+                <td>{cartData.couponStatus ? cartData.couponDiscount : 0}$</td>
               </tr>
               <tr style={{ color: "white", background: "#088178" }}>
                 <td>TOTAL</td>
@@ -122,7 +148,7 @@ function Cart() {
             <input id="couponInput" type="text" placeholder="Enter coupon..." />
             <button onClick={couponhandle}>Apply</button>
           </div>
-          {cartData.couponStatus?<p style={{color:"green"}}>Coupon Applied..</p>:null }
+          {cartData.couponStatus ? <p style={{color:"green"}}>Coupon Applied..</p> : null }
         </div>
       </div>
 
