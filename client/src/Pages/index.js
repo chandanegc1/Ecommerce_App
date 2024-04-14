@@ -16,6 +16,7 @@ import "../Styles/Profile.scss";
 import "../Styles/Loading.scss";
 import "../Styles/Search.scss";
 import "../Styles/icon.scss";
+import "../Styles/NotFound.scss";
 
 export {default as About} from "./About";
 export {default as Cart} from "./Cart";

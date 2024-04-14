@@ -14,20 +14,17 @@ import {
   HomeLayout
 } from "./Pages";
 
-
-// import axios from "axios";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { action as contactAction } from "./Pages/Contact";
 import { action as profileAction } from "./Pages/Profile";
-import {loader as HomeLayoutLoader} from "./Componants/HomeLayout"
-
 import Test from "./Componants/Test";
+import Error from "./Pages/Error";
+
 const router = createBrowserRouter([ 
   {
     path:"/",
     element:<HomeLayout />,
-   
-    
+    errorElement:<Error/>,
     children:[
       {
         index:true,
