@@ -24,7 +24,12 @@ const router = createBrowserRouter([
   {
     path:"/",
     element:<HomeLayout />,
+<<<<<<< HEAD
     errorElement:<Error/>,
+=======
+    loader:HomeLayoutLoader,
+    
+>>>>>>> a25e8597a743b3e8d198b08cf05ef593cc6130c1
     children:[
       {
         index:true,

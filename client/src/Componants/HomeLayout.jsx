@@ -1,10 +1,9 @@
-import React, { useEffect} from 'react';
-import { Outlet} from 'react-router-dom';
-import Header from './Header';
-import Footer from './Footer';
-import { getCartUrl } from './APIUrl';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react'
+import { Outlet} from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
+import axios from 'axios'
+import { useDispatch } from 'react-redux'
 
 const HomeLayout = () => {
   const dispatch = useDispatch();
