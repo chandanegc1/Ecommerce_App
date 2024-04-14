@@ -4,6 +4,7 @@ import { useState } from "react";
 import {toast} from "react-toastify"
 import Search from "./Search";
 import { BiCart } from "react-icons/bi";
+import {Badge} from 'antd';
 
 function Header(){
   const {cartCount} = useSelector(state => state.custom);
@@ -42,8 +43,8 @@ function Header(){
                     </ul>
                         <Link to={"/Cart"} onClick={notify}>
                         <div className='cart' style={{background:"transparent"}}>
-                        {login?<p className='count'><b>{cartCount}</b></p>:null}
-                           <BiCart className="BiCart"/>
+                        {login?<Badge className="count" count={cartCount}></Badge>:null}
+                        <BiCart className="BiCart"/>
                         </div>
                         </Link>
                          

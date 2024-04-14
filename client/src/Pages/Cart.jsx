@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import scrollToTop from "../Componants/goToTop";
 import { allcarturl, carturl, getCartUrl } from "../Componants/APIUrl";
 import { useDispatch } from "react-redux"; 
 import { GiCancel } from "react-icons/gi";
@@ -20,7 +19,6 @@ function Cart() {
     const fun = async () => {
       const res = await axios(getCartUrl+coupon);
       const {cartitem} = res.data;
-      console.log(res.data);
       setCartitems(cartitem);
       setCartdata(res.data);
     };
@@ -61,6 +59,8 @@ function Cart() {
         <h1>#readmore</h1>
         <p>Read all case studies about our product!</p>
       </div>
+      
+      <div className="cart-add">
       <div className="cart overflowhandle">
         <table width="100%" className="tbl">
           <thead>
@@ -70,7 +70,6 @@ function Cart() {
               <td>Products</td>
               <td>Price</td>
               <td>Quantity</td>
-              <td>Subtotal</td>
             </tr>
           </thead>
           <tbody>
@@ -80,32 +79,19 @@ function Cart() {
                   className="delete"
                   onClick={() => handleDeleteItem(product._id)}
                   style={{ cursor: "pointer" }}
-                >
-                  <GiCancel className='cartCancel'/>
-                </td>
-                <td>
-                  <img src={product.img} alt="" />
-                </td>
+                ><GiCancel className='cartCancel'/></td>
+                <td><img src={product.img} alt="" /></td>
                 <td>{product.name}</td>
                 <td>{product.price} $</td>
-                <td>
-                  <input type="number" name="" id="" value="1" readOnly />
-                </td>
+                <td><input type="text" name="" id="quant" value="1" readOnly /></td>
                 <td></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="cart-add">
-        <div className="coupon">
-          <h2>Apply Coupon</h2>
-          <div className="inp">
-            <input id="couponInput" type="text" placeholder="Enter coupon..." />
-            <button onClick={couponhandle}>Apply</button>
-          </div>
-        </div>
-        <div className="subtotal">
+
+      <div className="subtotal">
           <h2>Cart Total</h2>
           <table>
             <tbody>
@@ -129,7 +115,17 @@ function Cart() {
           </table>
           <button onClick={clearAllCart}>Proceed to checkout</button>
         </div>
+
+        <div className="coupon">
+          <h2>Apply Coupon</h2>
+          <div className="inp">
+            <input id="couponInput" type="text" placeholder="Enter coupon..." />
+            <button onClick={couponhandle}>Apply</button>
+          </div>
+          {cartData.couponStatus?<p style={{color:"green"}}>Coupon Applied..</p>:null }
+        </div>
       </div>
+
     </>
   );
 }

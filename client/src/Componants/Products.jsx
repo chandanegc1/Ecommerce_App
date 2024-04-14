@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import scrollToTop from "../Componants/goToTop.js";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { producturl } from "./APIUrl.js";
-import { carturl } from "./APIUrl.js";
-import { useDispatch } from "react-redux";
-import {toast} from "react-toastify";
 
 function Products(props) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  let login = localStorage.getItem("user");
-
   useEffect(() => {
     (async ()=>{
         const data = await axios.get(producturl);
@@ -20,37 +15,10 @@ function Products(props) {
     })();
   }, []);
 
-  // Add data in cart
-  // const addToCart = (e) => {
-  //   if (login) {
-  //     CartRedux();
-  //     const id = localStorage.getItem("id");
-  //     const {name, img, brand, price } = e;
-  //     axios
-  //       .post(carturl, { name, img, brand, price ,id })
-  //       .then(() => {
-  //         toast.success(e.name + " Added in Cart");
-  //       })
-  //   }else{
-  //     navigate("/login")
-  //   }
-  // };
-
   const navigate = useNavigate();
-
-  // handleClick function to send product data to ProductDetails
   function handleClick(Product) {
     navigate("/ProductDetails", { state: { Product } });
   }
-  
-  const dispatch = useDispatch();
-  const CartRedux = () => {
-    dispatch({
-      type: "cartCount",
-      payload: 1,
-    });
-  };
-
   return (
     <>
       <div className="products">
@@ -71,16 +39,6 @@ function Products(props) {
                   <div className="price">
                     <h4>{Product.price}</h4>
                   </div>
-                  {/* {props.cart? <div>
-                    <button>
-                     <Link to="/ProductDetails"><img
-                        className="shop-cart"
-                        onClick={() => addToCart(Product)}
-                        src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
-                        alt=""
-                      /></Link> 
-                    </button>
-                  </div>:null} */}
                 </div>
               </div>
             </div>
@@ -94,5 +52,4 @@ function Products(props) {
     </>
   );
 }
-
 export default Products;
