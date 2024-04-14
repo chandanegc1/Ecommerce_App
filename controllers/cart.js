@@ -25,7 +25,7 @@ export const cartData = async (req, res) => {
     let couponStatus = false;
     let couponDiscount = 20;
 
-    if (CartItemsPrice > couponDiscount && coupon == "XYZ") {
+    if (CartItemsPrice > couponDiscount && coupon === "XYZ") {
       TotalPrice = TotalPrice - couponDiscount;
       couponStatus = true;
     }
@@ -105,12 +105,3 @@ export const getCartCount = async (req, res) => {
   }
 };
 
-export const coupon = async () => {
-  try {
-    const data = req.body;
-    if (data == "XYZNM") res.status.json({ data: true });
-    else res.status.json({ data: false });
-  } catch (error) {
-    console.log(error);
-  }
-};

@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
-  cartCount: null,
+  cartCount: 0,
 };
 
 export const customReducer = createReducer(initialState, {
