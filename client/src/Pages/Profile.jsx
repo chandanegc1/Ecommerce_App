@@ -8,15 +8,12 @@ import {toast} from "react-toastify";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData) ;
-  // console.log(data);
-
   try {
       const url = updateUser;
       const resp = await axios.put(url, data);
       localStorage.setItem("userData" , JSON.stringify(resp.data.user));
       toast.success("Update success..");
       return null;
-      
   } catch (error) {
       toast.error("something went wrong");
       return error;

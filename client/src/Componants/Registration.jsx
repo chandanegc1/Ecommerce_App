@@ -39,8 +39,6 @@ const Registration = () => {
       localStorage.setItem("phone", formData.phone);
       localStorage.setItem("id", response._id);
       navigate("/login"); 
-      
-      window.location.reload();
     } catch (error) {
       toast.error("Something went wrong..");
     }
