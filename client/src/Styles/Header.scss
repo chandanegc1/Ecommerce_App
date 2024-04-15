@@ -13,6 +13,13 @@ body{
 .logoname img{
     width: 25px;
 }
+.nameLogo{  
+  b{
+    font-size: 18px;
+    font-style: italic;
+    color: #088178;
+  }
+}
 
 ul .cart{
   cursor: pointer;
@@ -48,7 +55,6 @@ a{
   header{
     display: flex;
     justify-content: space-between;
-    // padding: 7px 10px;
     top: 0;
     background: #E3E6F3;
     position: sticky;
