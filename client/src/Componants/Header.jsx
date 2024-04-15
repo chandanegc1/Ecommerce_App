@@ -5,6 +5,8 @@ import {toast} from "react-toastify"
 import Search from "./Search";
 import { BiCart } from "react-icons/bi";
 import {Badge} from 'antd';
+import { FaBars } from "react-icons/fa";
+import { GiCancel } from "react-icons/gi";
 
 function Header(){
   const {cartCount} = useSelector(state => state.custom);
@@ -33,7 +35,7 @@ function Header(){
             <div className="container">
                 <nav className="logoname" >
                     <ul>
-                        <li className='cancel' onClick={toggleVisibility}><img src=""/></li>
+                        <li className='cancel' onClick={toggleVisibility}><GiCancel className="FaBars"/></li>
                         <Link to={"/"}>        <li>Home</li>    </Link>
                         <Link to={"/Shop"}>    <li>Shop</li>    </Link>
                         <Link to={"/Blog"}>    <li>Blog</li>    </Link>
@@ -49,12 +51,12 @@ function Header(){
                         </Link>
                          
                     <div className="menu" onClick={toggleVisibility}>
-                        <img src=""  alt=""/>
+                        <FaBars className="FaBars"/>
                     </div>
                     
                     <div className="smallscreen">
                         <ul onClick={toggleVisibility} style={{display:disp}}>
-                            <li className='cancel' onClick={toggleVisibility}><img src=""/></li>
+                            <li className='cancel' onClick={toggleVisibility}><GiCancel className="GiCancel"/></li>
                             <Link to={"/"}>        <li>Home</li>    </Link>
                             <Link to={"/Shop"}>    <li>Shop</li>    </Link>
                             <Link to={"/Blog"}>    <li>Blog</li>    </Link>
@@ -62,10 +64,9 @@ function Header(){
                             <Link to={"/contact"}> <li>Contact</li>   </Link>
                             {login?<Link to={"/profile"}> <li>Profile</li>   </Link>:null}
                              <Link to={"/Cart"}>
-                            <li><div className='cart'>
-                            {login?<p className='counti'><b>{cartCount}</b></p>:null}
-                               <img src="" alt="Cart"/>
-                            </div></li>
+                            <li><div className='cart' style={{background:"transparent"}}>
+                        {login?<Badge className="count" count={cartCount}></Badge>:null}
+                        <BiCart className="BiCart"/></div></li>
                             </Link>
                             
                         </ul>

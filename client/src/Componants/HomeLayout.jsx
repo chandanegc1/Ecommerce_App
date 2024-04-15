@@ -21,7 +21,8 @@ const HomeLayout = () => {
       }
     };
 
-    fetchData();
+    let checklogin = localStorage.getItem("userData");
+    if(checklogin)fetchData();
   }, [dispatch]);
 
   return (

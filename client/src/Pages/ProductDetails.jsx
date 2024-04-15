@@ -2,7 +2,6 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {carturl } from "../Componants/APIUrl";
-import { toast } from "react-toastify";
 import { FaCartPlus } from "react-icons/fa";
 import PdctComment from "../Componants/PdctComment";
 
@@ -16,9 +15,8 @@ const ProductDetails = () => {
       const id = localStorage.getItem("id");
       const { name, img, brand, price } = e;
       CartRedux();
-      axios.post(carturl, { name, img, brand, price, id }).then((response) => {
-        toast.success(e.name + " Added in Cart");
-      });
+      axios.post(carturl, { name, img, brand, price, id });
+        // toast.success(e.name + " Added in Cart");
     } else {
       navigate("/login");
     }

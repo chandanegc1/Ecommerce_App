@@ -56,22 +56,12 @@ a{
   }
   .cancel{
     display: none;
-    
   }
-  .cancel img{
-    height: 20px; 
-    width: 20px; 
-    float: left;
-    margin-top: -10px;
-    margin-left: -150px;
-    border: 1px solid; 
-    border-radius: 100%;
-  }
+
   ul li:hover{
     color: #088178;
   }
   nav{
-    
     background: #E3E6F3;
     display: flex;
     flex-wrap: wrap;
@@ -165,4 +155,5 @@ a{
      border-color: black;
      border-radius: 100%;
    }
+   
  }
