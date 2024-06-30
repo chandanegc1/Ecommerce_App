@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {carturl } from "../Componants/APIUrl";
 import { FaCartPlus } from "react-icons/fa";
 import PdctComment from "../Componants/PdctComment";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const ProductDetails = () => {
       const { name, img, brand, price } = e;
       CartRedux();
       axios.post(carturl, { name, img, brand, price, id });
-        // toast.success(e.name + " Added in Cart");
+        toast.success(e.name + " Added in Cart");
     } else {
       navigate("/login");
     }
