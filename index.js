@@ -24,3 +24,4 @@ app.use("/api/v1", authRouter);
 app.listen(port, () => {
   console.log("connected.....");
 });
+ 
