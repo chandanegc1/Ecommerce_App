@@ -19,6 +19,14 @@ function Header() {
   const notify = () => {
     if (!login) toast.error("Please Login..");
   };
+
+  let path = window.location.pathname.slice(1);
+  if (path == "") path = "Home";
+  console.log(path);
+  const [acitve, setActive] = useState(path);
+  const colorFun = (e) => {
+    setActive(e);
+  };
   return (
     <>
       <header>
@@ -26,7 +34,12 @@ function Header() {
           <li>
             {login ? (
               <Link title="Profile" to={"/"}>
-                <div className="nameLogo" title="Profile Setting">
+                <div
+                  className="nameLogo"
+                  onClick={() => {
+                    colorFun("Home");
+                  }}
+                >
                   <p>
                     <b>Shopify</b>
                   </p>
@@ -46,22 +59,54 @@ function Header() {
               <li className="cancel" onClick={toggleVisibility}>
                 <GiCancel className="FaBars" />
               </li>
-              <Link to={"/"}>
+              <Link
+                to={"/"}
+                onClick={() => {
+                  colorFun("Home");
+                }}
+                className={acitve == "Home" ? "acitve-color" : null}
+              >
                 <li>Home</li>
               </Link>
-              <Link to={"/Shop"}>
+              <Link
+                to={"/Shop"}
+                onClick={() => {
+                  colorFun("Shop");
+                }}
+                className={acitve == "Shop" ? "acitve-color" : null}
+              >
                 <li>Shop</li>
               </Link>
-              <Link to={"/contact"}>
+              <Link
+                to={"/contact"}
+                onClick={() => {
+                  colorFun("contact");
+                }}
+                className={acitve == "contact" ? "acitve-color" : null}
+              >
                 <li>Contact</li>
               </Link>
               {login ? (
-                <Link to={"/profile"} onClick={notify}>
+                <Link
+                  to={"/profile"}
+                  onClick={() => {
+                    colorFun("profile");
+                    notify();
+                  }}
+                  className={acitve == "profile" ? "acitve-color" : null}
+                >
                   <li>Profile</li>
                 </Link>
               ) : null}
             </ul>
-            <Link to={"/Cart"} onClick={notify}>
+            <Link
+              to={"/Cart"}
+              className={acitve == "cart" ? "acitve-color" : null}
+              onClick={() => {
+                colorFun("cart");
+                notify();
+              }}
+            >
               <div className="cart" style={{ background: "transparent" }}>
                 {login ? (
                   <Badge className="count" count={cartCount}></Badge>
@@ -78,28 +123,58 @@ function Header() {
                 <li className="cancel" onClick={toggleVisibility}>
                   <GiCancel className="GiCancel" />
                 </li>
-                <Link to={"/"}>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    colorFun("Home");
+                  }}
+                  className={acitve == "Home" ? "acitve-color" : null}
+                >
                   <li>Home</li>
                 </Link>
-                <Link to={"/Shop"}>
+                <Link
+                  to={"/Shop"}
+                  onClick={() => {
+                    colorFun("Shop");
+                  }}
+                  className={acitve == "Shop" ? "acitve-color" : null}
+                >
                   <li>Shop</li>
                 </Link>
-                
-                <Link to={"/contact"}>
+                <Link
+                  to={"/contact"}
+                  onClick={() => {
+                    colorFun("contact");
+                  }}
+                  className={acitve == "contact" ? "acitve-color" : null}
+                >
                   <li>Contact</li>
                 </Link>
                 {login ? (
-                  <Link to={"/profile"}>
+                  <Link
+                    to={"/profile"}
+                    onClick={() => {
+                      colorFun("profile");
+                      notify();
+                    }}
+                    className={acitve == "profile" ? "acitve-color" : null}
+                  >
                     <li>Profile</li>
                   </Link>
                 ) : null}
+
                 <Link to={"/Cart"}>
-                  <li>
-                    <div className="cart" style={{ background: "transparent" }}>
+                  <li
+                    className={acitve == "cart" ? "acitve-color" : null}
+                    onClick={() => {
+                      colorFun("cart");
+                    }}
+                  >
+                    <div style={{ background: "transparent" }}>
                       {login ? (
                         <Badge className="count" count={cartCount}></Badge>
                       ) : null}
-                      <BiCart className="BiCart" /> 
+                      <BiCart className="BiCart" />
                     </div>
                   </li>
                 </Link>
