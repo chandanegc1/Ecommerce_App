@@ -5,7 +5,7 @@ import {carturl } from "../Componants/APIUrl";
 import { FaCartPlus } from "react-icons/fa";
 import PdctComment from "../Componants/PdctComment";
 import { toast } from "react-toastify";
-
+ 
 const ProductDetails = () => {
   const navigate = useNavigate();
   const Products = useLocation();
