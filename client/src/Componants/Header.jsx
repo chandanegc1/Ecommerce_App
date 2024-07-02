@@ -100,7 +100,7 @@ function Header() {
               ) : null}
             </ul>
             <Link
-              to={"/Cart"}
+              to={login?"/Cart":"/login"}
               className={acitve == "cart" ? "acitve-color" : null}
               onClick={() => {
                 colorFun("cart");
