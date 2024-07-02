@@ -30,7 +30,7 @@ function Profile() {
   const navigate = useNavigate();
   async function logoutFun() {
     await axios(logout);
-    localStorage.clear();
+    localStorage.clear(); 
     toast.success("You're Successfully Log-out .....");
     navigate("/");
     window.location.reload(); 

@@ -12,6 +12,7 @@ function Header() {
   const { cartCount } = useSelector((state) => state.custom);
   let login = localStorage.getItem("userData");
   login = JSON.parse(login);
+  console.log(login)
   const [disp, setDisp] = useState("none");
   const toggleVisibility = () => {
     disp === "none" ? setDisp("flex") : setDisp("none");
@@ -22,7 +23,6 @@ function Header() {
 
   let path = window.location.pathname.slice(1);
   if (path == "") path = "Home";
-  console.log(path);
   const [acitve, setActive] = useState(path);
   const colorFun = (e) => {
     setActive(e);
