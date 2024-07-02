@@ -10,9 +10,7 @@ import { GiCancel } from "react-icons/gi";
 
 function Header() {
   const { cartCount } = useSelector((state) => state.custom);
-  let login = localStorage.getItem("userData");
-  login = JSON.parse(login);
-  console.log(login)
+  let login = localStorage.getItem("user");
   const [disp, setDisp] = useState("none");
   const toggleVisibility = () => {
     disp === "none" ? setDisp("flex") : setDisp("none");

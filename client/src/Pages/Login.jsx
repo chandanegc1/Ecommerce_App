@@ -23,7 +23,7 @@ const Login = () => {
       const res = await axios.post(login, formData);
       localStorage.setItem("userData", JSON.stringify(res.data.user));
       localStorage.setItem("user", res.data.user.email);
-      localStorage.setItem("password", formData.password);
+      // localStorage.setItem("password", formData.password);
       navigate("/");
       window.location.reload();
       toast.success(res.data.msg);
