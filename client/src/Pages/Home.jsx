@@ -10,32 +10,33 @@ import Features from "../Componants/Features";
 import Products from "../Componants/Products";
 import SeasionSale from "../Componants/SeasionSale";
 import LandingPage from "../Componants/LandingPage";
-
+import ImageSlider from "../Componants/ImageSlider";
+import images from "../Componants/img";
 function Home() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   useEffect(() => {
     try {
-      let checklogin = localStorage.getItem("userData");
-      let password = localStorage.getItem("password");
-      if (!checklogin) checklogin = "null";
-      checklogin = JSON.parse(checklogin);
-      if (checklogin) {
-        const loginFun = async () =>
-          await axios.post(login, {
-            email: checklogin.email,
-            password: password,
-          });
-        loginFun();
-      }
+      // let checklogin = localStorage.getItem("userData");
+      // let password = localStorage.getItem("password");
+      // if (!checklogin || checklogin==undefined) checklogin = "null";
+      // checklogin = JSON.parse(checklogin);
+      // if (checklogin) {
+      //   const loginFun = async () =>
+      //     await axios.post(login, {
+      //       email: checklogin.email,
+      //       password: password,
+      //     });
+      //   loginFun();
+      // }
     } catch (error) {
-      const fetch = async () => {
-        const response = await axios.get(getCartUrl);
-        setUsers(response.data);
-        setLoading(true);
-      };
-      fetch();
+      // const fetch = async () => {
+      //   const response = await axios.get(getCartUrl);
+      //   setUsers(response.data);
+      //   setLoading(true);
+      // };
+      // fetch();
     }
   }, []);
 
@@ -43,8 +44,16 @@ function Home() {
 
   return (
     <>
-      <LandingPage />
-      <Features />
+    <div className="parentimg">
+    <div className="imgSlider">
+    <ImageSlider>
+        {images.map((image, index) => {
+          return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
+        })}
+      </ImageSlider>
+    </div>
+    </div>
+      
       <div className="section3">
         <div className="describe">
           <h2>featured products</h2>
