@@ -1,18 +1,17 @@
-.search{
-    display: flex;
-    padding: 5px;
-    #srchInput{
-      height: 14px;
-      width: 30vw;
-    }
-    input:focus{
-      outline: none;
-    }
-    input{
-      border-radius: 18px;
-    }
-   
+.search {
+  display: flex;
+  padding: 5px;
+  #srchInput {
+    height: 14px;
+    width: 30vw;
   }
-  .cursor{
-    cursor: pointer;
+  input:focus {
+    outline: none;
   }
+  input {
+    border-radius: 18px;
+  }
+}
+.cursor {
+  cursor: pointer;
+}

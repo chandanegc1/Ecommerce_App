@@ -1,53 +1,53 @@
-.section12345{
+.section12345 {
   padding: 3%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  .discriptionpart{
+  .discriptionpart {
     width: 47%;
   }
-  .mappart{
+  .mappart {
     width: 47%;
   }
 }
-.form{
+.form {
   background-color: azure;
-padding: 10px;
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: space-around;
-margin: 10px 30px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 30px;
 }
 
-.form input{
+.form input {
   margin: 10px 0px;
   border-radius: 5px;
   padding: 10px;
   border: 1px solid;
 }
-.profile img{
-margin: 1vw 1vw;
-height: 80px;
-width: 80px;
-border-radius: 100%;
-border: 1px solid;
+.profile img {
+  margin: 1vw 1vw;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  border: 1px solid;
 }
-.profile{
-margin: 20px 0 10px 0;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-evenly;
+.profile {
+  margin: 20px 0 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
-.mappart{
+.mappart {
   width: 500vw;
 }
-.form button{
+.form button {
   background-color: #088178;
   border: none;
   height: 40px;
   cursor: pointer;
-  width: 50%; 
+  width: 50%;
   border-radius: 3px;
 }

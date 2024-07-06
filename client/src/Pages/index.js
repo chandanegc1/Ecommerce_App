@@ -1,4 +1,4 @@
-import "../Styles/Home.scss"
+import "../Styles/Home.scss";
 import "../Styles/Features.scss";
 import "../Styles/Products.scss";
 import "../Styles/SignUp.scss";
@@ -18,17 +18,16 @@ import "../Styles/Search.scss";
 import "../Styles/icon.scss";
 import "../Styles/NotFound.scss";
 
-export {default as About} from "./About";
-export {default as Cart} from "./Cart";
-export {default as Shop} from "./Shop";
-export {default as Header} from "../Componants/Header";
-export {default as Blog} from "./Blog";
-export {default as Registration} from "../Componants/Registration";
-export {default as Login} from "./Login";
-export {default as Contact} from "./Contact";
-export {default as Home} from "./Home";
-export {default as Profile} from "./Profile";
-export {default as ProductDetails} from "./ProductDetails";
-export {default as PrivateComponent} from "../Componants/PrivateComponent";
-export {default as HomeLayout} from "../Componants/HomeLayout";
-
+export { default as About } from "./About";
+export { default as Cart } from "./Cart";
+export { default as Shop } from "./Shop";
+export { default as Header } from "../Componants/Header";
+export { default as Blog } from "./Blog";
+export { default as Registration } from "../Componants/Registration";
+export { default as Login } from "./Login";
+export { default as Contact } from "./Contact";
+export { default as Home } from "./Home";
+export { default as Profile } from "./Profile";
+export { default as ProductDetails } from "./ProductDetails";
+export { default as PrivateComponent } from "../Componants/PrivateComponent";
+export { default as HomeLayout } from "../Componants/HomeLayout";

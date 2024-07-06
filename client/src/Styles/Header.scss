@@ -1,27 +1,27 @@
-*{
-    margin: 0;
+* {
+  margin: 0;
 }
 
-body{
-    height: 100%;
+body {
+  height: 100%;
 }
 
-.logo img{
+.logo img {
   width: 100px;
 }
 
-.logoname img{
-    width: 25px;
+.logoname img {
+  width: 25px;
 }
-.nameLogo{  
-  b{
+.nameLogo {
+  b {
     font-size: 18px;
     font-style: italic;
     color: #088178;
   }
 }
 
-ul .cart{
+ul .cart {
   cursor: pointer;
   display: none;
   background-color: #088178;
@@ -29,139 +29,136 @@ ul .cart{
   justify-content: center;
   align-items: center;
 }
-.nameicon{
+.nameicon {
   margin-left: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  img{
+  img {
     width: 20px;
   }
-  p{
+  p {
     font-size: 10px;
   }
 }
-.acitve-color{
-  color:#088178;
+.acitve-color {
+  color: #088178;
 }
-.count{
+.count {
   position: absolute;
   margin-left: 14.5px;
   margin-top: 1px;
- }
+}
 
-a{
+a {
   color: rgb(29, 27, 27);
   text-decoration: none;
 }
-  header{
-    display: flex;
-    justify-content: space-between;
-    top: 0;
-    background: #E3E6F3;
-    position: sticky;
-    box-shadow: 0px 0.3px gray;  
-  }
-  .cancel{
+header {
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  background: #e3e6f3;
+  position: sticky;
+  box-shadow: 0px 0.3px gray;
+}
+.cancel {
+  display: none;
+}
+
+ul li:hover {
+  color: #088178;
+}
+nav {
+  background: #e3e6f3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  .menu {
     display: none;
   }
+}
 
-  ul li:hover{
+.logo {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+li {
+  cursor: pointer;
+  list-style: none;
+  padding: 2vh 1vh;
+  font-size: 2.5vh;
+  img {
+    width: 70px;
+  }
+}
+@media (max-width: 1100px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    position: fixed;
+    top: 0;
+    left: 10px;
+    background-color: #e3e6f3;
+    width: 50%;
+    height: 100vh;
+    padding: 0;
+    margin-left: -10px;
+  }
+
+  nav ul :hover {
     color: #088178;
   }
-  nav{
-    background: #E3E6F3;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-    .menu{
-        display: none; 
-      } 
+  ul .cart {
+    display: block;
   }
-  
-  .logo{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-evenly; 
+  .counti {
+    position: absolute;
+    color: rgb(168, 34, 34);
+    font-size: 13px;
+    margin-left: 18px;
+    margin-top: 20px;
   }
-  
-  ul{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-    
+  li {
+    line-height: 10px;
   }
-  li{
+  .top {
+    margin-top: 0px;
+  }
+  nav ul img {
+    padding: 10px 10px;
+  }
+
+  /*           */
+  nav .menu {
     cursor: pointer;
-    list-style: none;
-    padding:2vh 1vh ;
-    font-size: 2.5vh; 
-    img{
-      width: 70px;
-    }
+    display: block;
+    margin: 10px;
   }
-  @media (max-width:1100px){
-    nav ul {
-     display: none;  
-     flex-direction: column;
-     justify-content: start; 
-     position: fixed;
-     top: 0;
-     left: 10px;
-     background-color: #E3E6F3;
-     width: 50%;
-     height: 100vh;
-     padding: 0;
-     margin-left: -10px;
-    }
-    
-    nav ul :hover{
-     color: #088178;
-    }
-    ul .cart{
-      display: block;
-    }
-    .counti{
-      position: absolute;
-      color: rgb(168, 34, 34);
-      font-size: 13px;
-      margin-left: 18px;
-      margin-top: 20px;
-     
-    }
-    li{
-     line-height: 10px;
-    }
-    .top{
-     margin-top: 0px;
-    }
-    nav ul img{
-     padding: 10px 10px; 
-    }
- 
-    /*           */
-    nav .menu{
-     cursor: pointer;
-     display: block; 
-     margin: 10px ;
-   } 
-   header{
-     display: flex;
-     justify-content: space-between;
-   }
-   
-   .cancel{
-     display: block;
-     height: 20px;
-     width: 20px;
-     border-color: black;
-     border-radius: 100%;
-   }
-   
- }
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cancel {
+    display: block;
+    height: 20px;
+    width: 20px;
+    border-color: black;
+    border-radius: 100%;
+  }
+}

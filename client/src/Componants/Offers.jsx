@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const Offers = () => {
   return (
     <>
-    <div className="section5">
+      <div className="section5">
         <div className="part">
           <div className="banner1 banne">
             <div className="describe">
@@ -24,7 +24,7 @@ const Offers = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Offers
+export default Offers;

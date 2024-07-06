@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../Componants/APIUrl";
 import { toast } from "react-toastify";
@@ -10,7 +10,7 @@ const Login = () => {
     password: "",
   });
   const handleInputChange = (event) => {
-   const { name, value } = event.target;
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,

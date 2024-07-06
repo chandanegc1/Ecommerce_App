@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {carturl } from "../Componants/APIUrl";
+import { carturl } from "../Componants/APIUrl";
 import { FaCartPlus } from "react-icons/fa";
 import PdctComment from "../Componants/PdctComment";
 import { toast } from "react-toastify";
- 
+
 const ProductDetails = () => {
   const navigate = useNavigate();
   const Products = useLocation();
@@ -17,7 +17,7 @@ const ProductDetails = () => {
       const { name, img, brand, price } = e;
       CartRedux();
       axios.post(carturl, { name, img, brand, price, id });
-        toast.success(e.name + " Added in Cart");
+      toast.success(e.name + " Added in Cart");
     } else {
       navigate("/login");
     }
@@ -41,7 +41,10 @@ const ProductDetails = () => {
           <h1>{Product.name}</h1>
           <h2>{Product.brand}</h2>
           <h3>Price: {Product.price}$</h3>
-          <FaCartPlus onClick={() => addToCart(Product)} className="FacartIcon"/>
+          <FaCartPlus
+            onClick={() => addToCart(Product)}
+            className="FacartIcon"
+          />
           <div className="P-details">
             <h3>Product Details</h3>
             <p>
@@ -56,7 +59,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <PdctComment Product={Product}/>
+      <PdctComment Product={Product} />
     </>
   );
 };

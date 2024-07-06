@@ -11,7 +11,7 @@ import {
   Profile,
   ProductDetails,
   PrivateComponent,
-  HomeLayout
+  HomeLayout,
 } from "./Pages";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -20,70 +20,68 @@ import { action as profileAction } from "./Pages/Profile";
 import Test from "./Componants/Test";
 import Error from "./Pages/Error";
 
-const router = createBrowserRouter([ 
+const router = createBrowserRouter([
   {
-    path:"/",
-    element:<HomeLayout />,
-    errorElement:<Error/>,
-    children:[
+    path: "/",
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
       {
-        index:true,
-        element:<Home/>,
+        index: true,
+        element: <Home />,
       },
       {
-        path:"shop",
-        element:<Shop/>
+        path: "shop",
+        element: <Shop />,
       },
       {
-        path:"blog",
-        element:<Blog />
+        path: "blog",
+        element: <Blog />,
       },
       {
-        path:"about",
-        element:<About />
+        path: "about",
+        element: <About />,
       },
       {
-        path:"contact",
-        element:< Contact/>,
-        action:contactAction
+        path: "contact",
+        element: <Contact />,
+        action: contactAction,
       },
       {
-        path:"register",
-        element:< Registration/>
+        path: "register",
+        element: <Registration />,
       },
       {
-        path:"login",
-        element:<Login />,
+        path: "login",
+        element: <Login />,
       },
       {
-        path:"cart",
-        element:<Cart/>
+        path: "cart",
+        element: <Cart />,
       },
       {
-        path:"profile",
-        action:profileAction,
-        element:<PrivateComponent Component={Profile} />,
+        path: "profile",
+        action: profileAction,
+        element: <PrivateComponent Component={Profile} />,
       },
       {
-        path:"ProductDetails",
-        element:<ProductDetails /> 
-      },{
-        path:"test",
-        element:<Test/>
-      }
-    ]
+        path: "ProductDetails",
+        element: <ProductDetails />,
+      },
+      {
+        path: "test",
+        element: <Test />,
+      },
+    ],
   },
-  
-])
+]);
 
 const App = () => {
   const scrollOptions = {
     behavior: "auto",
     block: "start",
   };
-  return (
-   <RouterProvider scroll={scrollOptions} router={router}/>
-  );
+  return <RouterProvider scroll={scrollOptions} router={router} />;
 };
 
 export default App;

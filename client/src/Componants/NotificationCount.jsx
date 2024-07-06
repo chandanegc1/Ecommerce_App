@@ -1,6 +1,6 @@
-import React from 'react';
-import { ClockCircleOutlined } from '@ant-design/icons';
-import { Avatar, Badge, Space } from 'antd';
+import React from "react";
+import { ClockCircleOutlined } from "@ant-design/icons";
+import { Avatar, Badge, Space } from "antd";
 const App = () => (
   <Space size="middle">
     <Badge count={5}>
@@ -13,7 +13,7 @@ const App = () => (
       count={
         <ClockCircleOutlined
           style={{
-            color: '#f5222d',
+            color: "#f5222d",
           }}
         />
       }

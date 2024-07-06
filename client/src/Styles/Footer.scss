@@ -1,56 +1,54 @@
-footer{
-    background-color: rgba(128, 128, 128, 0.087);
-    padding: 20px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    h1{
-      color: #088178;
-    }
-    
+footer {
+  background-color: rgba(128, 128, 128, 0.087);
+  padding: 20px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  h1 {
+    color: #088178;
   }
-  footer .discribe{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  footer .address{
-   padding: 20px;
-  
-  }
-  .address .img{
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .img img{
-    width: 8vw;
-    border-radius: 3px;
-     border: 1px solid gray;
-  }
-  .Install-app.addr{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  footer p{
-    color: gray;
-    font-size: 1em;
-  }
-  @media (max-width:1100px){
-    .img img{
+}
+footer .discribe {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+footer .address {
+  padding: 20px;
+}
+.address .img {
+  display: flex;
+  justify-content: space-evenly;
+}
+.img img {
+  width: 8vw;
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+.Install-app.addr {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer p {
+  color: gray;
+  font-size: 1em;
+}
+@media (max-width: 1100px) {
+  .img img {
     width: 150px;
     border-radius: 3px;
-     border: 1px solid gray;
-    }
-    footer{
-      h1{
-        display: none;
-      }
-    }
-    // .address{
-    //   display: none;
-    // }
-    footer p{
-      color: gray;
-      font-size: 0.6em;
+    border: 1px solid gray;
+  }
+  footer {
+    h1 {
+      display: none;
     }
   }
+  // .address{
+  //   display: none;
+  // }
+  footer p {
+    color: gray;
+    font-size: 0.6em;
+  }
+}

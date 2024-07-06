@@ -1,33 +1,34 @@
-.worningbox{
-    top: 0;
-    height: 100vh;
-    width:100vh;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.668);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .box{
-        height: 30vh;
-        width: 45vw;
-        background-color: #E3E6F3;
-        border: 1px solid;
-        box-shadow: 2px 2px 2px 2px #194e4b;
-        text-align: center;
-        padding: 3%;
-        button{
-            cursor: pointer;
-            margin: 20px 5px;
-            background-color: #088178;
-            border: none;
-            height: 40px;
-            width: 150px;
-            color: white;
-            border-radius: 3px;
-            font-size: 17px;
-            box-shadow: 1px 1px 1px 1px #4a4f4e;
-          }:active{
-            box-shadow: none;
-          }
+.worningbox {
+  top: 0;
+  height: 100vh;
+  width: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.668);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .box {
+    height: 30vh;
+    width: 45vw;
+    background-color: #e3e6f3;
+    border: 1px solid;
+    box-shadow: 2px 2px 2px 2px #194e4b;
+    text-align: center;
+    padding: 3%;
+    button {
+      cursor: pointer;
+      margin: 20px 5px;
+      background-color: #088178;
+      border: none;
+      height: 40px;
+      width: 150px;
+      color: white;
+      border-radius: 3px;
+      font-size: 17px;
+      box-shadow: 1px 1px 1px 1px #4a4f4e;
     }
+    :active {
+      box-shadow: none;
+    }
+  }
 }

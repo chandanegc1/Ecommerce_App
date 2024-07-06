@@ -1,23 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { allcarturl, carturl, getCartUrl } from "../Componants/APIUrl";
-import { useDispatch } from "react-redux"; 
+import { useDispatch } from "react-redux";
 import { GiCancel } from "react-icons/gi";
 
 function Cart() {
-  const [Cartitems , setCartitems] = useState([]);
-  const [cartData , setCartdata] = useState({
-    TotalPrice:0,
-    couponStatus:false,
-    CartItemsPrice:0,
-    couponDiscount:0,
-    deliveryCharge:0,
-    deliveryChargeStatus:true,
+  const [Cartitems, setCartitems] = useState([]);
+  const [cartData, setCartdata] = useState({
+    TotalPrice: 0,
+    couponStatus: false,
+    CartItemsPrice: 0,
+    couponDiscount: 0,
+    deliveryCharge: 0,
+    deliveryChargeStatus: true,
   });
 
-  const [coupon,setcoupon] = useState("");
-  const [check , setCheck] = useState(false);
-  
+  const [coupon, setcoupon] = useState("");
+  const [check, setCheck] = useState(false);
+
   const mounted = useRef(true);
   useEffect(() => {
     return () => {
@@ -28,8 +28,8 @@ function Cart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios(getCartUrl+coupon);
-        const {cartitem} = res.data;
+        const res = await axios(getCartUrl + coupon);
+        const { cartitem } = res.data;
         if (!mounted.current) return;
         setCartitems(cartitem);
         setCartdata(res.data);
@@ -42,21 +42,23 @@ function Cart() {
 
   const couponhandle = () => {
     let couponRef = document.getElementById("couponInput");
-    setcoupon("?coupon="+couponRef.value);
+    setcoupon("?coupon=" + couponRef.value);
     couponRef.value = "";
     setCheck(!check);
-  }
-  
+  };
+
   const dispatch = useDispatch();
-  
+
   const handleDeleteItem = async (id) => {
     try {
-      await axios.delete(carturl+"/"+id);
+      await axios.delete(carturl + "/" + id);
       if (!mounted.current) return;
-      setCartitems(prevCartitems => prevCartitems.filter(product => product._id !== id));
+      setCartitems((prevCartitems) =>
+        prevCartitems.filter((product) => product._id !== id)
+      );
       dispatch({
         type: "cartCount",
-        payload: -1
+        payload: -1,
       });
       setCheck(!check);
     } catch (error) {
@@ -71,7 +73,7 @@ function Cart() {
       setCartitems([]);
       dispatch({
         type: "setCartCount",
-        payload: 0
+        payload: 0,
       });
       setCheck(!check);
     } catch (error) {
@@ -85,7 +87,7 @@ function Cart() {
         <h1>#readmore</h1>
         <p>Read all case studies about our product!</p>
       </div>
-      
+
       <div className="cart-add">
         <div className="cart overflowhandle">
           <table width="100%" className="tbl">
@@ -105,11 +107,17 @@ function Cart() {
                     className="delete"
                     onClick={() => handleDeleteItem(product._id)}
                     style={{ cursor: "pointer" }}
-                  ><GiCancel className='cartCancel'/></td>
-                  <td><img src={product.img} alt="" /></td>
+                  >
+                    <GiCancel className="cartCancel" />
+                  </td>
+                  <td>
+                    <img src={product.img} alt="" />
+                  </td>
                   <td>{product.name}</td>
                   <td>{product.price} $</td>
-                  <td><input type="text" name="" id="quant" value="1" readOnly /></td>
+                  <td>
+                    <input type="text" name="" id="quant" value="1" readOnly />
+                  </td>
                   <td></td>
                 </tr>
               ))}
@@ -127,7 +135,9 @@ function Cart() {
               </tr>
               <tr>
                 <td>Delivery Charge</td>
-                <td>{cartData.deliveryChargeStatus ? cartData.deliveryCharge : 0}$</td>
+                <td>
+                  {cartData.deliveryChargeStatus ? cartData.deliveryCharge : 0}$
+                </td>
               </tr>
               <tr>
                 <td>Discount</td>
@@ -148,10 +158,11 @@ function Cart() {
             <input id="couponInput" type="text" placeholder="Enter coupon..." />
             <button onClick={couponhandle}>Apply</button>
           </div>
-          {cartData.couponStatus ? <p style={{color:"green"}}>Coupon Applied..</p> : null }
+          {cartData.couponStatus ? (
+            <p style={{ color: "green" }}>Coupon Applied..</p>
+          ) : null}
         </div>
       </div>
-
     </>
   );
 }

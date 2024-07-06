@@ -1,13 +1,13 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import scrollToTop from "./goToTop";
 import { usersurl } from "./APIUrl";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const Registration = () => {
   scrollToTop();
-  
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -38,7 +38,7 @@ const Registration = () => {
       localStorage.setItem("email", formData.email);
       localStorage.setItem("phone", formData.phone);
       localStorage.setItem("id", response._id);
-      navigate("/login"); 
+      navigate("/login");
     } catch (error) {
       toast.error("Something went wrong..");
     }

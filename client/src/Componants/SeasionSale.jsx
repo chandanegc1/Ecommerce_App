@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const SeasionSale = () => {
   return (
     <>
-    <div className="part">
+      <div className="part">
         <div className="banner3 banner">
           <div className="describe">
             <h2>SEASON SALE</h2>
@@ -24,7 +24,7 @@ const SeasionSale = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SeasionSale
+export default SeasionSale;

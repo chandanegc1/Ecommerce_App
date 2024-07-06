@@ -44,16 +44,16 @@ function Home() {
 
   return (
     <>
-    <div className="parentimg">
-    <div className="imgSlider">
-    <ImageSlider>
-        {images.map((image, index) => {
-          return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
-        })}
-      </ImageSlider>
-    </div>
-    </div>
-      
+      <div className="parentimg">
+        <div className="imgSlider">
+          <ImageSlider>
+            {images.map((image, index) => {
+              return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
+            })}
+          </ImageSlider>
+        </div>
+      </div>
+
       <div className="section3">
         <div className="describe">
           <h2>featured products</h2>
