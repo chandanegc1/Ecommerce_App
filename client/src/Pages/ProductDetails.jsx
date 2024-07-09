@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { carturl } from "../Componants/APIUrl";
+import { carturl } from "../utils/APIUrl";
 import { FaCartPlus } from "react-icons/fa";
-import PdctComment from "../Componants/PdctComment";
+import PdctComment from "../Componants/component/PdctComment";
 import { toast } from "react-toastify";
 
 const ProductDetails = () => {

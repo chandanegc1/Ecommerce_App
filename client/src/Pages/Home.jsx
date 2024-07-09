@@ -1,42 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { getCartUrl, login } from "../Componants/APIUrl";
+import { getCartUrl, login } from "../utils/APIUrl";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import axios from "axios";
-import SingUp from "../Componants/Sing-Up";
-import Offers from "../Componants/Offers";
-import Features from "../Componants/Features";
-import Products from "../Componants/Products";
-import SeasionSale from "../Componants/SeasionSale";
-import LandingPage from "../Componants/LandingPage";
-import ImageSlider from "../Componants/ImageSlider";
-import images from "../Componants/img";
+import SingUp from "../Componants/component/Sing-Up";
+import Offers from "../Componants/component/Offers";
+import Products from "../Componants/component/Products";
+import ImageSlider from "../Componants/component/ImageSlider";
+import images from "../utils/img";
 function Home() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   useEffect(() => {
     try {
-      // let checklogin = localStorage.getItem("userData");
-      // let password = localStorage.getItem("password");
-      // if (!checklogin || checklogin==undefined) checklogin = "null";
-      // checklogin = JSON.parse(checklogin);
-      // if (checklogin) {
-      //   const loginFun = async () =>
-      //     await axios.post(login, {
-      //       email: checklogin.email,
-      //       password: password,
-      //     });
-      //   loginFun();
-      // }
+      let checklogin = localStorage.getItem("userData");
+      let password = localStorage.getItem("password");
+      if (!checklogin || checklogin==undefined) checklogin = "null";
+      checklogin = JSON.parse(checklogin);
+      if (checklogin) {
+        const loginFun = async () =>
+          await axios.post(login, {
+            email: checklogin.email,
+            password: password,
+          });
+        loginFun();
+      }
     } catch (error) {
-      // const fetch = async () => {
-      //   const response = await axios.get(getCartUrl);
-      //   setUsers(response.data);
-      //   setLoading(true);
-      // };
-      // fetch();
+      const fetch = async () => {
+        const response = await axios.get(getCartUrl);
+        setUsers(response.data);
+        setLoading(true);
+      };
+      fetch();
     }
   }, []);
 
@@ -72,7 +68,6 @@ function Home() {
       </div>
       <Products start={8} end={16} />
       <Offers />
-      <SeasionSale />
       <SingUp />
     </>
   );

@@ -12,14 +12,12 @@ import {
   ProductDetails,
   PrivateComponent,
   HomeLayout,
+  Error
 } from "./Pages";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { action as contactAction } from "./Pages/Contact";
 import { action as profileAction } from "./Pages/Profile";
-import Test from "./Componants/Test";
-import Error from "./Pages/Error";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,10 +65,6 @@ const router = createBrowserRouter([
       {
         path: "ProductDetails",
         element: <ProductDetails />,
-      },
-      {
-        path: "test",
-        element: <Test />,
       },
     ],
   },

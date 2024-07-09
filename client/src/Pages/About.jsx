@@ -1,6 +1,6 @@
 import React from "react";
-import scrollToTop from "../Componants/goToTop";
-import SingUp from "../Componants/Sing-Up";
+import scrollToTop from "../utils/goToTop";
+import SingUp from "../Componants/component/Sing-Up";
 function About() {
   scrollToTop();
   return (

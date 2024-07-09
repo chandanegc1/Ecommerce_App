@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { allcarturl, carturl, getCartUrl } from "../Componants/APIUrl";
+import { allcarturl, carturl, getCartUrl } from "../utils/APIUrl";
 import { useDispatch } from "react-redux";
 import { GiCancel } from "react-icons/gi";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import Products from "../Componants/Products";
-import SingUp from "../Componants/Sing-Up";
-import Nextbtn from "../Componants/Nextbtn";
-import scrollToTop from "../Componants/goToTop";
+import Products from "../Componants/component/Products";
+import SingUp from "../Componants/component/Sing-Up";
+import Nextbtn from "../Componants/component/Nextbtn";
+import scrollToTop from "../utils/goToTop";
 
 function Shop() {
   scrollToTop();

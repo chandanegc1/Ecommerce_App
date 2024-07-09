@@ -1,7 +1,7 @@
 import React from "react";
-import Nextbtn from "../Componants/Nextbtn";
-import SingUp from "../Componants/Sing-Up";
-import scrollToTop from "../Componants/goToTop";
+import Nextbtn from "../Componants/component/Nextbtn";
+import SingUp from "../Componants/component/Sing-Up";
+import scrollToTop from "../utils/goToTop";
 function Blog() {
   scrollToTop();
   return (

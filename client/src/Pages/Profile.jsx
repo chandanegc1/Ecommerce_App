@@ -1,8 +1,8 @@
 import React from "react";
-import { logout, updateUser } from "../Componants/APIUrl";
+import { logout, updateUser } from "../utils/APIUrl";
 import axios from "axios";
 import { Form, useNavigate } from "react-router-dom";
-import scrollToTop from "../Componants/goToTop";
+import scrollToTop from "../utils/goToTop";
 import { toast } from "react-toastify";
 
 export const action = async ({ request }) => {

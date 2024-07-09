@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { postMessageUrl } from "../Componants/APIUrl";
+import { postMessageUrl } from "../utils/APIUrl";
 import { Form } from "react-router-dom";
 import { toast } from "react-toastify";
 
