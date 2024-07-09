@@ -14,25 +14,25 @@ function Home() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     try {
-      let checklogin = localStorage.getItem("userData");
-      let password = localStorage.getItem("password");
-      if (!checklogin || checklogin==undefined) checklogin = "null";
-      checklogin = JSON.parse(checklogin);
-      if (checklogin) {
-        const loginFun = async () =>
-          await axios.post(login, {
-            email: checklogin.email,
-            password: password,
-          });
-        loginFun();
-      }
+      // let checklogin = localStorage.getItem("userData");
+      // let password = localStorage.getItem("password");
+      // if (!checklogin || checklogin==undefined) checklogin = "null";
+      // checklogin = JSON.parse(checklogin);
+      // if (checklogin) {
+      //   const loginFun = async () =>
+      //     await axios.post(login, {
+      //       email: checklogin.email,
+      //       password: password,
+      //     });
+      //   loginFun();
+      // }
     } catch (error) {
-      const fetch = async () => {
-        const response = await axios.get(getCartUrl);
-        setUsers(response.data);
-        setLoading(true);
-      };
-      fetch();
+      // const fetch = async () => {
+      //   const response = await axios.get(getCartUrl);
+      //   setUsers(response.data);
+      //   setLoading(true);
+      // };
+      // fetch();
     }
   }, []);
 
