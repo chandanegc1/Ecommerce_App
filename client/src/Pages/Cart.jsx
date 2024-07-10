@@ -3,7 +3,7 @@ import axios from "axios";
 import { allcarturl, carturl, getCartUrl } from "../utils/APIUrl";
 import { useDispatch } from "react-redux";
 import { GiCancel } from "react-icons/gi";
-import { clearCart, updateCart } from "../Redux/Reducer";
+import { clearCart, updateCart } from "../Redux/Slices/cartSlice";
 
 function Cart() {
   const dispatch = useDispatch();

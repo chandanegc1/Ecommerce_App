@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { getCartUrl } from "../../utils/APIUrl";
-import { updateCart } from "../../Redux/Reducer";
+import { updateCart } from "../../Redux/Slices/cartSlice";
 
 const HomeLayout = () => {
   const dispatch = useDispatch();

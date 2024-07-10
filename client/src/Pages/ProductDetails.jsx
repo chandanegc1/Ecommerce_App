@@ -5,7 +5,7 @@ import { carturl } from "../utils/APIUrl";
 import { FaCartPlus } from "react-icons/fa";
 import PdctComment from "../Componants/component/PdctComment";
 import { toast } from "react-toastify";
-import { updateCart } from "../Redux/Reducer";
+import { updateCart } from "../Redux/Slices/cartSlice";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
