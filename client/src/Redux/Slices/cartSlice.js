@@ -5,10 +5,10 @@ const cartSlice = createSlice({
   initialState: { cartCount: 0 },
   reducers: {
     updateCart: (state, action) => {
-      state.cartCount += action.payload; // action.payload can be positive or negative
+      state.cartCount += action.payload;
     },
     clearCart:(state, action) => {
-      state.cartCount = action.payload; // action.payload can be positive or negative
+      state.cartCount = action.payload; 
     }
   }
 });

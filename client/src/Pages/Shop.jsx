@@ -8,6 +8,8 @@ function Shop() {
   scrollToTop();
   return (
     <>
+      {/* <!-- Destop Description --> */}
+
       <div className="section1-shop">
         <h1>#StayHome</h1>
         <p>Save more with coupans & up to 70% off! </p>

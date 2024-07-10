@@ -3,14 +3,17 @@ import axios from "axios";
 import scrollToTop from "../../utils/goToTop.js";
 import { useNavigate } from "react-router-dom";
 import { producturl } from "../../utils/APIUrl.js";
+import { useDispatch, useSelector } from "react-redux";
+import { UpdateSearch } from "../../Redux/Slices/searchSlice.js";
 
 function Products(props) {
-  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const users = useSelector(state=>state.search);
   useEffect(() => {
     (async () => {
       const data = await axios.get(producturl);
-      setUsers(data.data);
+      dispatch(UpdateSearch(data.data));
       setLoading(true);
     })();
   }, []);
@@ -23,7 +26,7 @@ function Products(props) {
     <>
       <div className="products">
         {loading ? (
-          users.slice(props.start, props.end).map((Product) => (
+          users[0].slice(props.start, props.end).map((Product) => (
             <div className="product" key={Product._id}>
               <div className="product-images" onClick={scrollToTop}>
                 <img

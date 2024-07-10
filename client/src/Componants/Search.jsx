@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import { search as searchAPI } from "../utils/APIUrl";
+import {useDispatch, useSelector} from "react-redux";
+import { UpdateSearch } from "../Redux/Slices/searchSlice";
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const selector = useSelector(state=>state.search);
+  console.log(selector)
   const [data, setData] = useState([]);
   const [search, setSearch] = useState({ name: "", price: "", brand: "" });
   let timeoutId = null;
@@ -21,9 +26,8 @@ const Search = () => {
     }));
 
     debounce(() => {
-      // Call your API function here
       fetchData();
-    }, 1000); // Adjust delay time as needed
+    }, 1000);
   };
 
   const fetchData = async () => {
@@ -33,23 +37,25 @@ const Search = () => {
           `?name=${search.name}&price=${search.price}&brand=${search.brand}`
       );
       setData(res.data);
+      dispatch(UpdateSearch(res.data));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-
-  console.log(data)
+  
   return (
     <div className="search">
       <input
         id="name"
+        className="srchInput"
         value={search.name}
         onChange={handleChange}
-        placeholder="Name"
+        placeholder="Search..."
         type="text"
       />
       <input
         id="price"
+        className="srchInput disp"
         value={search.price}
         onChange={handleChange}
         placeholder="Price"
@@ -57,6 +63,7 @@ const Search = () => {
       />
       <input
         id="brand"
+        className="srchInput disp"
         value={search.brand}
         onChange={handleChange}
         placeholder="Brand"
