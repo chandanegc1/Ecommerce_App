@@ -38,7 +38,7 @@ try {
   export const search = async (req, res) => {
     try {
       const { name, brand, price } = req.query;
-
+      console.log(name,brand,price);
       const query = {};
       if (name) query.name = new RegExp(name, 'i');
       if (brand) query.brand = new RegExp(brand, 'i');

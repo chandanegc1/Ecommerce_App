@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { getCartUrl } from "../../utils/APIUrl";
+import { updateCart } from "../../Redux/Reducer";
 
 const HomeLayout = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,7 @@ const HomeLayout = () => {
     const fetchData = async () => {
       try {
         const res = await axios(getCartUrl);
-        dispatch({
-          type: "setCartCount",
-          payload: res.data.cartitem.length,
-        });
+        dispatch(updateCart(res.data.cartitem.length));
       } catch (error) {
         console.error("Error fetching cart count:", error);
       }

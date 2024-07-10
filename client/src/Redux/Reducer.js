@@ -1,21 +1,18 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  cartCount: 0,
-};
-
-export const customReducer = createReducer(initialState, {
-  cartCount: (state, action) => {
-    if (state.cartCount >= 0) state.cartCount += action.payload;
-  },
-  setCartCount: (state, action) => {
-    state.cartCount = action.payload;
-  },
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: { cartCount: 0 },
+  reducers: {
+    updateCart: (state, action) => {
+      state.cartCount += action.payload; // action.payload can be positive or negative
+    },
+    clearCart:(state, action) => {
+      state.cartCount = action.payload; // action.payload can be positive or negative
+    }
+  }
 });
 
-const cartInitial = [{}];
-export const cartReducer = createReducer(cartInitial, {
-  cartItem: (state, action) => {
-    state.allCart = action.payload;
-  },
-});
+export const { updateCart , clearCart} = cartSlice.actions;
+
+export default cartSlice.reducer;

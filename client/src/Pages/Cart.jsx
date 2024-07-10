@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { allcarturl, carturl, getCartUrl } from "../utils/APIUrl";
 import { useDispatch } from "react-redux";
 import { GiCancel } from "react-icons/gi";
+import { clearCart, updateCart } from "../Redux/Reducer";
 
 function Cart() {
-  const [Cartitems, setCartitems] = useState([]);
-  const [cartData, setCartdata] = useState({
+  const dispatch = useDispatch();
+  const [cartItems, setCartItems] = useState([]);
+  const [coupon, setCoupon] = useState("");
+  const [check, setCheck] = useState(false);
+  const [cartData, setCartData] = useState({
     TotalPrice: 0,
     couponStatus: false,
     CartItemsPrice: 0,
@@ -15,51 +19,59 @@ function Cart() {
     deliveryChargeStatus: true,
   });
 
-  const [coupon, setcoupon] = useState("");
-  const [check, setCheck] = useState(false);
-
-  const mounted = useRef(true);
   useEffect(() => {
-    return () => {
-      mounted.current = false;
-    };
-  }, []);
+    let mounted = true;
 
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios(getCartUrl + coupon);
-        const { cartitem } = res.data;
-        if (!mounted.current) return;
-        setCartitems(cartitem);
-        setCartdata(res.data);
+        if (mounted) {
+          const { cartitem } = res.data;
+          setCartItems(cartitem);
+          setCartData(res.data);
+        }
       } catch (error) {
         console.error("Error fetching cart data:", error);
       }
     };
+
     fetchData();
+
+    return () => {
+      mounted = false;
+    };
   }, [check]);
 
-  const couponhandle = () => {
-    let couponRef = document.getElementById("couponInput");
-    setcoupon("?coupon=" + couponRef.value);
-    couponRef.value = "";
-    setCheck(!check);
+  const debounce = (func, delay) => {
+    let timer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(context, args);
+      }, delay);
+    };
   };
 
-  const dispatch = useDispatch();
+  const debouncedSetCoupon = debounce((value) => {
+    setCoupon(value);
+    setCheck(!check);
+  }, 300);
+
+  const couponhandle = () => {
+    let couponRef = document.getElementById("couponInput").value;
+    debouncedSetCoupon("?coupon=" + couponRef);
+    couponRef = "";
+  };
 
   const handleDeleteItem = async (id) => {
     try {
       await axios.delete(carturl + "/" + id);
-      if (!mounted.current) return;
-      setCartitems((prevCartitems) =>
-        prevCartitems.filter((product) => product._id !== id)
+      setCartItems((prevCartItems) =>
+        prevCartItems.filter((product) => product._id !== id)
       );
-      dispatch({
-        type: "cartCount",
-        payload: -1,
-      });
+      dispatch(updateCart(-1));
       setCheck(!check);
     } catch (error) {
       console.error("Error deleting item:", error);
@@ -69,18 +81,14 @@ function Cart() {
   const clearAllCart = async () => {
     try {
       await axios.delete(allcarturl);
-      if (!mounted.current) return;
-      setCartitems([]);
-      dispatch({
-        type: "setCartCount",
-        payload: 0,
-      });
+      setCartItems([]);
+      dispatch(clearCart(0));
       setCheck(!check);
     } catch (error) {
       console.error("Error clearing cart:", error);
     }
   };
-
+console.log("hd")
   return (
     <>
       <div className="section123">
@@ -101,7 +109,7 @@ function Cart() {
               </tr>
             </thead>
             <tbody>
-              {Cartitems.map((product) => (
+              {cartItems.map((product) => (
                 <tr key={product._id}>
                   <td
                     className="delete"

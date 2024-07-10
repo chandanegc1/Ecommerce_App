@@ -5,6 +5,7 @@ import { carturl } from "../utils/APIUrl";
 import { FaCartPlus } from "react-icons/fa";
 import PdctComment from "../Componants/component/PdctComment";
 import { toast } from "react-toastify";
+import { updateCart } from "../Redux/Reducer";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -24,10 +25,7 @@ const ProductDetails = () => {
   };
   const dispatch = useDispatch();
   const CartRedux = () => {
-    dispatch({
-      type: "cartCount",
-      payload: +1,
-    });
+    dispatch(updateCart(1));
   };
   return (
     <>
