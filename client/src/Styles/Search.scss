@@ -6,8 +6,8 @@
   .srchInput {
     box-shadow: 2px 2px gray;
     margin-top: 6px;
-    height: 14px;
-    width: 18em;
+    max-height: 13px;
+    max-width: 20vw;
   }
   .disp{
     width: 3em;
@@ -19,10 +19,22 @@
     border-radius: 18px;
   }
 }
-.cursor {
-  margin-top: 4px;
+.search .cursor {
+  margin-top: 6px;
   cursor: pointer;
+  box-shadow: 2px 2px gray;
+  border-radius: 13px;
+  padding: 5px;
 }
+.search .iconsize{
+  width: 40px;
+  background-color: white;
+}
+.search .iconsize:active{
+  box-shadow: none;
+  background-color: rgb(208, 198, 198);
+}
+
 @media (max-width: 1100px) {
   .disp {
     display: none;

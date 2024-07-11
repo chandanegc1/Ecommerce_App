@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { getCartUrl } from "../../utils/APIUrl";
 import { updateCart } from "../../Redux/Slices/cartSlice";
+import { toast } from "react-toastify";
 
 const HomeLayout = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const HomeLayout = () => {
 
     let checklogin = localStorage.getItem("userData");
     if (checklogin) fetchData();
+    else  toast.error("Please Login..");
   }, [dispatch]);
 
   return (
