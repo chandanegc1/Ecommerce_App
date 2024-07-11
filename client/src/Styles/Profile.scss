@@ -1,8 +1,3 @@
-/* Reset some default styles */
-
-/* Apply a background color to the entire page */
-
-/* Center the form on the page */
 .pflrimg {
   display: flex;
   margin-top: 25px;
@@ -27,9 +22,7 @@
 .pflrimg img {
   background-image: url(../Assets/profile-user.png);
   background-repeat: no-repeat;
-
   background-size: cover;
-
   width: 150px;
   height: 150px;
   border-radius: 100%;
@@ -45,8 +38,6 @@
     color: #088178;
   }
 }
-
-/* Style form elements */
 .form-group {
   padding: 1vh 2vw;
   margin-bottom: 15px;
@@ -54,13 +45,11 @@
     margin-top: 10px;
   }
 }
-
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
-
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -69,7 +58,6 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 form button {
   background-color: #088178;
   color: #fff;
@@ -79,8 +67,6 @@ form button {
   cursor: pointer;
   font-size: 16px;
 }
-
-/* Add responsive styles */
 @media (max-width: 768px) {
   .profile-settings-container {
     max-width: 100%;

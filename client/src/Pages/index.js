@@ -18,6 +18,7 @@ import "../Styles/Search.scss";
 import "../Styles/icon.scss";
 import "../Styles/NotFound.scss";
 import "../Styles/ImageSlider.scss";
+import "../style.css"
 
 export { default as About } from "./About";
 export { default as Cart } from "./Cart";

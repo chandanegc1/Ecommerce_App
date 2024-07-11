@@ -1,9 +1,16 @@
 .search {
   display: flex;
   padding: 5px;
+  margin-top: -4px;
+  border-radius: 8px;
   .srchInput {
+    box-shadow: 2px 2px gray;
+    margin-top: 6px;
     height: 14px;
-    width: 30vw;
+    width: 18em;
+  }
+  .disp{
+    width: 3em;
   }
   input:focus {
     outline: none;
@@ -13,6 +20,7 @@
   }
 }
 .cursor {
+  margin-top: 4px;
   cursor: pointer;
 }
 @media (max-width: 1100px) {
