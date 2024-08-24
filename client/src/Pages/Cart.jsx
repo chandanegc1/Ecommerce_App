@@ -88,7 +88,6 @@ function Cart() {
       console.error("Error clearing cart:", error);
     }
   };
-console.log("hd")
   return (
     <>
       <div className="section123">

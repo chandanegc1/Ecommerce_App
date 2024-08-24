@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getCartUrl, login } from "../utils/APIUrl";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import axios from "axios";
 import SingUp from "../Componants/component/Sing-Up";
 import Offers from "../Componants/component/Offers";
 import Products from "../Componants/component/Products";

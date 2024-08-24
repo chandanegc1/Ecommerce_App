@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../utils/APIUrl";
 import { toast } from "react-toastify";
-import { FaBars, FaEye, FaInvision, FaLowVision } from "react-icons/fa";
-import { FaEyeLowVision } from "react-icons/fa6";
+import {FaEye, FaLowVision } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();

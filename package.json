@@ -1,9 +1,7 @@
 {
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon index.js",
-    "client": "cd client && npm start",
-    "setup-project": "npm i && cd client && npm i"
+    "start": "node index.js"
+    
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

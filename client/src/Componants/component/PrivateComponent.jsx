@@ -1,8 +1,5 @@
-import axios from "axios";
-import React, { Component, useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import { currentUser } from "../../utils/APIUrl";
-import { toast } from "react-toastify";
 
 const PrivateComponent = (props) => {
   const { Component } = props;
