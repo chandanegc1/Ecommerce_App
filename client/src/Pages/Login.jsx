@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../utils/APIUrl";
 import { toast } from "react-toastify";
+import { FaBars, FaEye, FaInvision, FaLowVision } from "react-icons/fa";
+import { FaEyeLowVision } from "react-icons/fa6";
+
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,7 +26,6 @@ const Login = () => {
       const res = await axios.post(login, formData);
       localStorage.setItem("userData", JSON.stringify(res.data.user));
       localStorage.setItem("user", res.data.user.email);
-      // localStorage.setItem("password", formData.password);
       navigate("/");
       window.location.reload();
       toast.success(res.data.msg);
@@ -32,6 +34,10 @@ const Login = () => {
     }
   };
 
+  const [vis , setVis] = useState(true);
+  const EyeToggle = ()=>{
+    setVis(!vis);
+  }
   return (
     <>
       <div className="body">
@@ -48,17 +54,17 @@ const Login = () => {
                 required="true"
               />
             </div>
-            <div className="input-box">
+            <div className="input-box flex">
               <input
                 onChange={handleInputChange}
                 name="password"
-                type="password"
+                type={vis?"password":"text"}
                 placeholder="Enter password"
                 required="true"
               />
+              {vis?<FaLowVision className="eye" onClick={EyeToggle}/>:<FaEye className="eye" onClick={EyeToggle}/>}
             </div>
             <div className="policy">
-              {/* <h3 style={{ color: "red" }}></h3> */}
             </div>
             <div className="input-box button">
               <button type="submit">Login</button>

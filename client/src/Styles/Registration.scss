@@ -11,9 +11,9 @@
   max-width: 430px;
   width: 100%;
   background: #fff;
-  padding: 34px;
+  padding: 34px 65px 34px 34px;
   border-radius: 6px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.289);
 }
 .wrapper h2 {
   font-size: 22px;
@@ -36,11 +36,17 @@
 .wrapper form .input-box {
   height: 52px;
   margin: 18px 0;
+  .eye{
+    margin-left: -25px;
+    margin-top: 20px;
+    cursor: pointer;
+    z-index: inherit;
+  }
 }
 form .input-box input {
   height: 100%;
   width: 100%;
-  outline: none;
+  outline: none; 
   padding: 0 15px;
   font-size: 17px;
   font-weight: 400;
@@ -63,7 +69,6 @@ form .policy {
     width: 15px;
   }
 }
-
 form h3 {
   color: #707070;
   font-size: 14px;
