@@ -1,4 +1,4 @@
-const url = "/api/v1/";
+const url = "/api";
 const id = localStorage.getItem("user");
 export const carturl = url + "cart";
 export const getCartUrl = url + "cart/" + id;

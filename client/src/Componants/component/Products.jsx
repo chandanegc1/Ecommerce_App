@@ -10,6 +10,7 @@ function Products(props) {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const users = useSelector(state=>state.search);
+
   useEffect(() => {
     (async () => {
       const data = await axios.get(producturl);
